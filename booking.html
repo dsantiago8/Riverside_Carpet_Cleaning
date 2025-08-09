@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Book Your Service | Riverside Carpet Cleaning</title>
+<style>
+  :root{
+    --snake:#39FF14;
+    --snake-dark:#27c90b;
+    --ink:#111;
+    --muted:#6b7280;
+    --paper:#f8f9fb;
+    --card:#fff;
+    --line:#e6e8ef;
+    --bg:#f2f4f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Segoe UI,system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:#eef1f4}
+  a{color:inherit}
+  .page{max-width:1200px;margin:20px auto;padding:0 20px}
+  .title{font-size:22px;margin:0 0 12px}
+  .notice{
+    background:#fff;border:1px solid var(--line);border-left:6px solid var(--snake);
+    padding:14px 16px;border-radius:8px;margin-bottom:16px;color:#1f2937
+  }
+
+  /* Layout */
+  .wrap{display:grid;grid-template-columns:1fr 320px;gap:20px}
+  @media (max-width:1000px){ .wrap{grid-template-columns:1fr} }
+
+  /* Left column header row */
+  .toolbar{
+    display:flex;gap:10px;align-items:center;justify-content:space-between;margin:12px 0 16px
+  }
+  .search{
+    display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);
+    border-radius:8px;padding:8px 10px;min-width:260px
+  }
+  .search input{border:none;outline:none;width:100%;font-size:14px}
+  .view{display:flex;gap:8px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;
+    cursor:pointer;font-weight:600;font-size:14px
+  }
+  .btn:hover{border-color:#d3d7e0}
+  .btn-primary{background:var(--snake);border-color:var(--snake-dark);font-weight:800}
+  .btn-primary:hover{filter:brightness(.95)}
+  .pill{border-radius:999px;padding:10px 14px}
+
+  /* Grid/List */
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+  @media (max-width:1100px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:700px){ .grid{grid-template-columns:1fr} }
+  .list{display:grid;grid-template-columns:1fr;gap:12px}
+
+  /* Product card */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    display:flex;flex-direction:column
+  }
+  .media{aspect-ratio:4/3;background:#ddd;display:flex;align-items:center;justify-content:center}
+  .media img{width:100%;height:100%;object-fit:cover}
+  .body{padding:14px 14px 10px}
+  .name{font-weight:800;margin:2px 0 6px}
+  .desc{color:var(--muted);font-size:14px;line-height:1.45}
+  .priceRow{
+    display:flex;align-items:center;justify-content:space-between;margin-top:12px
+  }
+  .price{font-weight:800;color:#065f46}
+  .unit{font-weight:600;color:var(--muted);margin-left:6px}
+
+  .controls{
+    display:flex;align-items:center;gap:6px;margin:10px 0 6px
+  }
+  .qty{
+    display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden
+  }
+  .qty button{width:32px;height:32px;border:none;background:#f8fafc;cursor:pointer;font-weight:800}
+  .qty input{width:44px;text-align:center;border:none;outline:none;height:32px}
+  .add{margin-left:auto}
+
+  /* Sidebar */
+  .side{
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;position:sticky;top:12px;height:fit-content
+  }
+  .biz{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+  .biz img{width:56px;height:56px;border-radius:6px;object-fit:cover;border:1px solid var(--line)}
+  .biz h3{margin:0;font-size:16px}
+  .muted{color:var(--muted);font-size:14px}
+  .cart{margin-top:8px;border-top:1px dashed var(--line);padding-top:10px}
+  .cart-item{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #f1f3f6}
+  .cart-item small{color:var(--muted)}
+  .rm{background:none;border:none;color:#ef4444;cursor:pointer}
+  .coupon{display:flex;gap:8px;margin:12px 0}
+  .coupon input{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px}
+  .totals{display:grid;gap:6px;margin:10px 0}
+  .lineR{display:flex;justify-content:space-between}
+  .grand{font-size:18px;font-weight:900}
+</style>
+</head>
+<body>
+  <div class="page">
+    <h1 class="title">Book your service</h1>
+
+    <div class="wrap">
+      <!-- LEFT: catalog -->
+      <div>
+        <div class="notice">
+          <strong>BUNDLE SERVICES FOR DISCOUNTS.</strong>
+          Pet urine odor, colored stains, and deodorizer are extra. 100% green, chemical-free cleaning available on request.
+        </div>
+
+        <div class="toolbar">
+          <div class="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke-width="2"/></svg>
+            <input id="search" placeholder="Search…" />
+          </div>
+          <div class="view">
+            <button id="gridBtn" class="btn">Grid view</button>
+            <button id="listBtn" class="btn">List view</button>
+          </div>
+        </div>
+
+        <div id="catalog" class="grid"></div>
+      </div>
+
+      <!-- RIGHT: cart -->
+      <aside class="side">
+        <div class="biz">
+          <img src="images/logo.jpg" alt="Logo" />
+          <div>
+            <h3>Riverside Carpet Cleaning</h3>
+            <div class="muted">(702) 357-1313</div>
+          </div>
+        </div>
+
+        <div class="cart" id="cart"></div>
+
+        <div class="coupon">
+          <input id="coupon" placeholder="Enter coupon (GREEN10)" />
+          <button class="btn" id="applyCoupon">Apply</button>
+        </div>
+
+        <div class="totals">
+          <div class="lineR"><span>Subtotal</span><strong id="sub">$0.00</strong></div>
+          <div class="lineR"><span>Discount</span><strong id="disc">-$0.00</strong></div>
+          <div class="lineR grand"><span>Total</span><span id="grand">$0.00</span></div>
+        </div>
+
+        <button class="btn btn-primary pill" id="continue">Continue »</button>
+        <div class="muted" style="margin-top:8px;">You’ll confirm your details on the next step.</div>
+      </aside>
+    </div>
+  </div>
+
+<script>
+/* ------- Data (replace images/prices as you like) ------- */
+const PRODUCTS = [
+  {
+    id:'std-room',
+    name:'Standard size room up to 144 sq ft',
+    desc:'Any bedroom, dining room, living room…',
+    price:48,
+    img:'images/room1.jpg'
+  },
+  {
+    id:'med-room',
+    name:'Medium room up to 216 sq ft',
+    desc:'Any room or area up to 216 sq ft.',
+    price:72,
+    img:'images/room2.jpg'
+  },
+  {
+    id:'large-room',
+    name:'Large room up to 288 sq ft',
+    desc:'Any room or double area up to 288 sq ft.',
+    price:96,
+    img:'images/room3.jpg'
+  },
+  {
+    id:'stairs',
+    name:'Stair Flights',
+    desc:'Single staircase (up to 14 steps).',
+    price:35,
+    img:'images/stairs.jpg'
+  },
+  {
+    id:'hall',
+    name:'Small Hallway up to 56 sq ft',
+    desc:'Hall/landing area. Great add-on.',
+    price:18,
+    img:'images/hall.jpg'
+  }
+];
+
+const state = {
+  view:'grid',
+  filter:'',
+  cart:{},           // {id: {qty, product}}
+  coupon:null        // 'GREEN10' -> 10%
+};
+
+const el = sel => document.querySelector(sel);
+
+/* ------- Render Catalog ------- */
+function qtyStepper(id){
+  return `
+    <div class="qty" data-for="${id}">
+      <button type="button" class="qminus">−</button>
+      <input type="number" min="1" value="1" />
+      <button type="button" class="qplus">+</button>
+    </div>
+  `;
+}
+
+function card(product){
+  return `
+  <article class="card">
+    <div class="media">${product.img ? `<img src="${product.img}" alt="">` : ''}</div>
+    <div class="body">
+      <div class="name">${product.name}</div>
+      <div class="desc">${product.desc}</div>
+      <div class="priceRow">
+        <div><span class="price">$${product.price.toFixed(2)}</span><span class="unit">/each</span></div>
+      </div>
+      <div class="controls">
+        ${qtyStepper(product.id)}
+        <button class="btn add" data-id="${product.id}">Add to Cart</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function listRow(product){
+  // same content but compact (for list view)
+  return `
+  <article class="card" style="flex-direction:row;gap:12px">
+    <div class="media" style="width:220px;flex:0 0 220px">${product.img ? `<img src="${product.img}" alt="">` : ''}</div>
+    <div class="body" style="flex:1">
+      <div class="name" style="font-size:18px">${product.name}</div>
+      <div class="desc">${product.desc}</div>
+      <div class="priceRow">
+        <div><span class="price">$${product.price.toFixed(2)}</span><span class="unit">/each</span></div>
+      </div>
+      <div class="controls">
+        ${qtyStepper(product.id)}
+        <button class="btn add" data-id="${product.id}">Add to Cart</button>
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderCatalog(){
+  const wrap = el('#catalog');
+  wrap.className = state.view === 'grid' ? 'grid' : 'list';
+  const items = PRODUCTS.filter(p =>
+    p.name.toLowerCase().includes(state.filter) ||
+    p.desc.toLowerCase().includes(state.filter)
+  );
+  wrap.innerHTML = items.map(p => state.view==='grid'?card(p):listRow(p)).join('');
+}
+
+/* ------- Cart ------- */
+function addToCart(id, qty){
+  const product = PRODUCTS.find(p=>p.id===id);
+  if(!product) return;
+  if(!state.cart[id]) state.cart[id] = {qty:0, product};
+  state.cart[id].qty += qty;
+  renderCart();
+}
+
+function removeFromCart(id){
+  delete state.cart[id];
+  renderCart();
+}
+
+function computeTotals(){
+  let subtotal = 0;
+  for(const k in state.cart){
+    subtotal += state.cart[k].qty * state.cart[k].product.price;
+  }
+  let discount = 0;
+  if(state.coupon==='GREEN10') discount = subtotal * 0.10;
+  const total = Math.max(0, subtotal - discount);
+  return {subtotal, discount, total};
+}
+
+function renderCart(){
+  const c = el('#cart');
+  const keys = Object.keys(state.cart);
+  if(keys.length===0){
+    c.innerHTML = `<div class="muted">Cart is empty.</div>`;
+  }else{
+    c.innerHTML = keys.map(k=>{
+      const {product, qty} = state.cart[k];
+      return `
+        <div class="cart-item">
+          <div>
+            <div><strong>${product.name}</strong></div>
+            <small>$${product.price.toFixed(2)} × ${qty}</small>
+          </div>
+          <div>
+            <div><strong>$${(product.price*qty).toFixed(2)}</strong></div>
+            <button class="rm" data-id="${product.id}">remove</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+  const {subtotal, discount, total} = computeTotals();
+  el('#sub').textContent = `$${subtotal.toFixed(2)}`;
+  el('#disc').textContent = `-$${discount.toFixed(2)}`;
+  el('#grand').textContent = `$${total.toFixed(2)}`;
+}
+
+/* ------- Events ------- */
+document.addEventListener('click', e=>{
+  if(e.target.matches('.add')){
+    const id = e.target.dataset.id;
+    const qtyEl = e.target.closest('.controls').querySelector('input');
+    addToCart(id, Math.max(1, parseInt(qtyEl.value||'1',10)));
+  }
+  if(e.target.matches('.rm')){
+    removeFromCart(e.target.dataset.id);
+  }
+  if(e.target.matches('.qplus')){
+    const input = e.target.parentElement.querySelector('input');
+    input.value = (parseInt(input.value||'1',10)+1);
+  }
+  if(e.target.matches('.qminus')){
+    const input = e.target.parentElement.querySelector('input');
+    input.value = Math.max(1, parseInt(input.value||'1',10)-1);
+  }
+  if(e.target.id==='gridBtn'){ state.view='grid'; renderCatalog(); }
+  if(e.target.id==='listBtn'){ state.view='list'; renderCatalog(); }
+});
+
+el('#search').addEventListener('input', e=>{
+  state.filter = e.target.value.trim().toLowerCase();
+  renderCatalog();
+});
+
+el('#applyCoupon').addEventListener('click', ()=>{
+  const code = el('#coupon').value.trim().toUpperCase();
+  state.coupon = (code==='GREEN10') ? 'GREEN10' : null;
+  renderCart();
+  if(!state.coupon) alert('Invalid coupon. Try GREEN10.');
+});
+
+el('#continue').addEventListener('click', ()=>{
+  // Link this to your contact/checkout page
+  window.location.href = 'contact.html';
+});
+
+/* Init */
+renderCatalog();
+renderCart();
+</script>
+</body>
+</html>
