@@ -188,7 +188,7 @@
 /* Right: About stack styled like white pills */
 .about-stack{display:flex;flex-direction:column;gap:14px}
 .about-pill{
-  background:var(--card);
+  background:#ffffff;
   border:1px solid var(--line);
   border-radius:10px;
   padding:16px 18px;
