@@ -6,6 +6,8 @@
     --cardBorder:#27c90b;  /* darker snake for borders */
     --cardShadow: 0 8px 24px rgba(0,0,0,.12);
     --slate:#3e4449;
+    --charcoal:#2e3438;     /* deep charcoal band */
+
   }
   
   *{box-sizing:border-box;margin:0;padding:0}
@@ -54,7 +56,7 @@
   
 /* Services section */
 .services{
-    background:#3e4449;          /* matches the dark gray from screenshot */
+    background:#3e4449;          
     padding:48px 0 64px;
     color:var(--white);
   }
@@ -154,9 +156,92 @@
   .band-grid{grid-template-columns:1fr}
 }
 
+
+/* Band container */
+.ba-section{
+  background: linear-gradient(180deg, #2c3236, var(--charcoal));
+  padding: 36px 0 44px;
+  border-top: 3px solid rgba(57,255,20,.25);
+  border-bottom: 3px solid rgba(57,255,20,.25);
+}
+
+.ba-title{
+  color:#f9fafb;
+  text-align:center;
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:.2px;
+  margin: 0 0 18px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.35);
+}
+
+/* Scroller */
+.ba-scroller{
+  overflow:hidden;
+  border-radius:14px;
+  position:relative;
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.ba-track{
+  display:flex;
+  gap:14px;
+  padding:14px;
+  width:max-content;                     /* shrink to content */
+  animation: ba-scroll 35s linear infinite;
+}
+.ba-scroller:hover .ba-track{ animation-play-state:paused; } /* pause on hover */
+
+@keyframes ba-scroll{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }  /* because we duplicated tiles */
+}
+
+/* Tiles */
+.ba-tile{
+  position:relative;
+  background:var(--paper);
+  border:2px solid rgba(57,255,20,.25);
+  border-radius:12px;
+  overflow:hidden;
+  width:300px;             /* card width */
+  height:200px;            /* card height */
+  flex:0 0 auto;
+}
+.ba-tile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.ba-tile figcaption{
+  position:absolute;
+  left:10px; top:10px;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:4px 8px;
+  font-weight:800;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.3px;
+  border:1px solid rgba(255,255,255,.18);
+}
+.ba-tile.after figcaption{
+  background: var(--snake);
+  color:#000;
+  border-color: rgba(0,0,0,.25);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .ba-tile{ width:240px; height:160px; }
+}
+
+
 /* Left card */
 .biz-card{
-  background:var(--card);
+  background:#ffffff;
   border:1px solid var(--line);
   border-radius:12px;
   padding:20px;
@@ -178,9 +263,9 @@
 .btn-primary:hover{filter:brightness(.95)}
 .pill{border-radius:999px}
 
-.biz-contact{margin-top:16px}
-.biz-contact .row{display:flex;align-items:center;gap:10px;margin:8px 0}
-.biz-contact a{color:#0b5e49;text-decoration:none;font-weight:700}
+.biz-contact{margin-top:3px}
+.biz-contact .row{display:flex;align-items:center;justify-content:flex-start;margin:2px 0}
+.biz-contact a{color:#0b5e49;text-decoration:none;font-weight:700;margin-top: 0px;}
 
 /* Map */
 .map-embed iframe{border-radius:12px;border:1px solid var(--line);background:#ddd}
