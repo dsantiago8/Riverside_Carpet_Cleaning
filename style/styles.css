@@ -9,6 +9,17 @@
     --charcoal:#2e3438;     /* deep charcoal band */
 
   }
+  /* For the rest of the site text */
+  body, p, li, a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400; /* normal weight for paragraphs */
+    color: #333; /* adjust color to your design */
+  }
+
+  h1, h2, h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600; /* slightly bolder for headings */
+  }
   
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:Segoe UI,system-ui,-apple-system,Arial,sans-serif;color:var(--ink);line-height:1.5}
@@ -24,8 +35,9 @@
   .container{max-width:1200px;margin:0 auto;padding:0 24px;}
   .nav-row{
     display:grid; grid-template-columns:auto 1fr auto; align-items:center;
-    gap:16px; height:64px;
+    gap:16px; height:110px;
   }
+
   html {
     scroll-behavior: smooth;      /* smooth anchor scrolling */
     scroll-padding-top: 72px;     /* match your header height */
@@ -33,7 +45,7 @@
 
   /* Brand */
   .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
-  .brand img{width:36px; height:36px; object-fit:contain; border-radius:8px}
+  .brand img{width:115px; height:115px; object-fit:contain; border-radius:8px}
   .brand-title {
     font-family: 'Anton', sans-serif;
     font-weight: normal; /* Anton has only one weight; this is fine */
@@ -94,7 +106,7 @@
     align-items:center;
     gap:32px;
   }
-  .copy h1{font-size:40px;line-height:1.1;margin-bottom:10px;font-weight:800}
+  .copy h1{font-family: 'Anton', sans-serif;font-size:40px;line-height:1.1;margin-bottom:10px;font-weight:800}
   .copy h1 span{opacity:.8}
   .copy p{max-width:46ch;margin-bottom:16px;opacity:.95}
   .btn{
@@ -123,6 +135,7 @@
       color:var(--white);
     }
     .services-title{
+      font-family: 'Anton', sans-serif;
       font-size:28px;
       font-weight:800;
       text-align:center;
@@ -228,6 +241,7 @@
   }
 
   .ba-title{
+    font-family: 'Anton', sans-serif;
     color:#f9fafb;
     text-align:center;
     font-size:28px;
@@ -308,10 +322,10 @@
     padding:20px;
   }
   .biz-logo{
-    width:88px;height:88px;object-fit:contain;border-radius:10px;
+    width:120px;height:120px;object-fit:contain;border-radius:10px;
     display:block;margin-bottom:10px;
   }
-  .biz-card h3{margin:0 0 10px;font-size:22px}
+  .biz-card h3{margin:0 0 10px;font-family: 'Anton', sans-serif;font-size:22px}
   .biz-block{margin:14px 0 18px}
   .biz-block strong{display:block;margin-bottom:6px}
 
