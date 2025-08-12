@@ -8,14 +8,32 @@
 </head>
 <body>
   <!-- Top bar -->
-  <header class="topbar">
-    <div class="container row">
-      <div class="brand">Riverside Carpet Cleaning</div>
+  <header class="site-header">
+    <div class="container nav-row">
+      <!-- Brand -->
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Riverside Carpet Cleaning logo">
+        <span class="brand-title">Riverside Carpet Cleaning</span>
+      </a>
+  
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+  
+      <!-- Nav -->
       <nav class="nav">
-        <a href="#">Home</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="booking.html" class="nav-link">Booking</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </nav>
+  
+      <!-- Right: phone + CTA -->
+      <div class="nav-cta">
+        <a class="phone" href="tel:+17023571313"> (702) 333-3333</a>
+        <a class="btn-primary pill" href="booking.html">Book Now</a>
+      </div>
     </div>
   </header>
 
