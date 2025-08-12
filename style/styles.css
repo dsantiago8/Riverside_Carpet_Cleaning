@@ -26,12 +26,22 @@
     display:grid; grid-template-columns:auto 1fr auto; align-items:center;
     gap:16px; height:64px;
   }
+  html {
+    scroll-behavior: smooth;      /* smooth anchor scrolling */
+    scroll-padding-top: 72px;     /* match your header height */
+  }
 
   /* Brand */
   .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
   .brand img{width:36px; height:36px; object-fit:contain; border-radius:8px}
-  .brand-title{font-weight:900; color:var(--ink); letter-spacing:.2px}
-
+  .brand-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: normal; /* Anton has only one weight; this is fine */
+    font-size: 1.8rem;   /* Adjust size as needed */
+    letter-spacing: 1px; /* Optional—helpful for condensed fonts */
+    text-transform: uppercase;
+  }
+  
   /* Nav */
   .nav{display:flex; gap:20px; justify-content:center}
   .nav-link{
@@ -314,7 +324,7 @@
   .btn-primary:hover{filter:brightness(.95)}
   .pill{border-radius:999px}
 
-  .biz-contact{margin-top:3px}
+  .biz-contact{margin-top:25px}
   .biz-contact .row{display:flex;align-items:center;justify-content:flex-start;margin:2px 0}
   .biz-contact a{color:#0b5e49;text-decoration:none;font-weight:700;margin-top: 0px;}
 
