@@ -403,7 +403,7 @@
   .bottom-band .about-pill h4{
     font-family: 'Anton', sans-serif;
     font-weight: 900;
-    letter-spacing: .3px;
+    letter-spacing: 1px;
     color: #ffffff;
     margin: 0 0 6px;
   }
@@ -419,7 +419,7 @@
     margin: 6px 0;
   }
 
-  /* Optional: subtle snake-green accent line under each title */
+  /*  subtle snake-green accent line under each title */
   .bottom-band .about-pill h4::after{
     content:"";
     display:block;
@@ -428,3 +428,12 @@
     border-radius: 999px;
     margin-top: 6px;
   }
+  /* Add spacing below the Business Hours block */
+  .biz-block {
+    margin: 14px 0 24px; /* Top, Right/Left, Bottom */
+  }
+
+  .biz-card .btn {
+    margin-top: 12px;
+  }
+
