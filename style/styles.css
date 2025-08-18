@@ -88,14 +88,55 @@
   }
   .nav-toggle span{display:block; width:20px; height:2px; background:#111}
   @media (max-width:900px){
-    .nav-row{grid-template-columns:auto auto auto}
-    .nav{position:absolute; left:0; right:0; top:64px; background:#fff;
-        border-bottom:1px solid var(--hair); display:none; flex-direction:column;
-        padding:10px 24px}
-    .nav.open{display:flex}
-    .nav-toggle{display:flex}
-    .nav-cta{gap:8px}
-    .phone{display:none}          /* hide phone chip on smaller screens */
+    /* Header row size */
+    .nav-row{
+      grid-template-columns: auto 1fr auto;
+      height: 72px;
+    }
+  
+    /* Smaller brand lockup */
+    .brand img{ width:44px; height:44px; }
+    .brand-title{ font-size:1.1rem; letter-spacing:.5px; }
+  
+    /* Update anchor-offset so anchors don't hide under sticky header */
+    html{ scroll-padding-top:72px; }
+  
+    /* Toggle visible */
+    .nav-toggle{ display:flex; }
+  
+    /* Hide right-side CTA area on mobile (we'll put them in the menu) */
+    .nav-cta{ display:none; }
+  
+    /* Dropdown panel */
+    .nav{
+      position:absolute; left:0; right:0; top:72px;
+      background:#fff; border-bottom:1px solid var(--hair);
+      display:none; flex-direction:column; padding:6px 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    }
+    .nav.open{ display:flex; }
+  
+    /* Big, easy-to-tap links */
+    .nav-link{
+      padding:14px 24px; font-size:1.05rem;
+      border-bottom:1px solid rgba(0,0,0,.05);
+    }
+    .nav-link:last-of-type{ border-bottom:none; }
+    /* remove the desktop underline indicator */
+    .nav-link::after{ content:none; }
+  
+    /* Phone chip inside menu */
+    .phone-mobile{
+      display:block; margin:8px 24px; padding:10px 12px;
+      background:#ecfdf5; color:#0b5e49; text-decoration:none; font-weight:800;
+      border-radius:8px; text-align:center;
+    }
+  
+    /* Book Now button inside menu */
+    .cta-mobile{
+      display:block; margin:6px 24px 14px;
+      text-align:center; box-shadow:0 6px 18px rgba(57,255,20,.25);
+    }
   }
   
   /* Hero */
