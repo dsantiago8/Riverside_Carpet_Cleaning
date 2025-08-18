@@ -87,57 +87,74 @@
     background:#fff; border-radius:10px; align-items:center; justify-content:center; gap:4px;
   }
   .nav-toggle span{display:block; width:20px; height:2px; background:#111}
+  /* Base button (desktop hidden) */
+  .menu-pill{
+    appearance:none; border:1px solid var(--hair);
+    background:#ffffff; color:#111; font-weight:700;
+    height:40px; padding:0 12px; border-radius:999px;
+    display:none; align-items:center; gap:8px; cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
+  .menu-pill:focus-visible{ outline:2px solid var(--snake); outline-offset:2px; }
+
+  /* Icon: three bars */
+  .menu-icon,
+  .menu-icon::before,
+  .menu-icon::after{
+    content:""; display:block; width:18px; height:2px;
+    background:#111; border-radius:2px;
+  }
+  .menu-icon::before{ transform: translateY(-6px); }
+  .menu-icon::after{  transform: translateY( 4px); }
+
+  /* When menu is open, animate to X */
+  .menu-open .menu-icon{ background:transparent; }
+  .menu-open .menu-icon::before{ transform: rotate(45deg); }
+  .menu-open .menu-icon::after{  transform: rotate(-45deg); }
+
+  /* Mobile layout */
   @media (max-width:900px){
-    /* Header row size */
     .nav-row{
-      grid-template-columns: auto 1fr auto;
-      height: 72px;
+      grid-template-columns:auto 1fr auto;
+      height:72px;
     }
-  
-    /* Smaller brand lockup */
     .brand img{ width:44px; height:44px; }
     .brand-title{ font-size:1.1rem; letter-spacing:.5px; }
-  
-    /* Update anchor-offset so anchors don't hide under sticky header */
-    html{ scroll-padding-top:72px; }
-  
-    /* Toggle visible */
-    .nav-toggle{ display:flex; }
-  
-    /* Hide right-side CTA area on mobile (we'll put them in the menu) */
-    .nav-cta{ display:none; }
-  
+
+    html{ scroll-padding-top:72px; } /* anchor offset */
+
+    .menu-pill{ display:flex; }      /* show pill */
+    .nav-cta{ display:none; }        /* hide desktop CTAs on mobile */
+
     /* Dropdown panel */
     .nav{
       position:absolute; left:0; right:0; top:72px;
       background:#fff; border-bottom:1px solid var(--hair);
       display:none; flex-direction:column; padding:6px 0;
-      box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      box-shadow:0 10px 24px rgba(0,0,0,.08);
     }
     .nav.open{ display:flex; }
-  
-    /* Big, easy-to-tap links */
+
+    /* Large tap targets */
     .nav-link{
       padding:14px 24px; font-size:1.05rem;
       border-bottom:1px solid rgba(0,0,0,.05);
     }
     .nav-link:last-of-type{ border-bottom:none; }
-    /* remove the desktop underline indicator */
-    .nav-link::after{ content:none; }
-  
-    /* Phone chip inside menu */
+    .nav-link::after{ content:none; } /* remove desktop underline */
+
+    /* Mobile-only items inside menu */
     .phone-mobile{
       display:block; margin:8px 24px; padding:10px 12px;
       background:#ecfdf5; color:#0b5e49; text-decoration:none; font-weight:800;
       border-radius:8px; text-align:center;
     }
-  
-    /* Book Now button inside menu */
     .cta-mobile{
-      display:block; margin:6px 24px 14px;
-      text-align:center; box-shadow:0 6px 18px rgba(57,255,20,.25);
+      display:block; margin:6px 24px 14px; text-align:center;
+      box-shadow:0 6px 18px rgba(57,255,20,.25);
     }
   }
+
   
   /* Hero */
   .hero{background:var(--snake);color:var(--white);padding:32px 0}
