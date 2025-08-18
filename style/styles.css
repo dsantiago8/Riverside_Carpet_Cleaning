@@ -314,34 +314,6 @@
     .ba-tile{ width:240px; height:160px; }
   }
 
-  /* Left card */
-  .biz-card{
-    background:#ffffff;
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:20px;
-  }
-  .biz-logo{
-    width:120px;height:120px;object-fit:contain;border-radius:10px;
-    display:block;margin-bottom:10px;
-  }
-  .biz-card h3{margin:0 0 10px;font-family: 'Anton', sans-serif;font-size:22px}
-  .biz-block{margin:14px 0 18px}
-  .biz-block strong{display:block;margin-bottom:6px}
-
-  .btn{
-    display:inline-block;
-    font-weight:900;text-decoration:none;text-align:center;
-    padding:12px 16px;border-radius:10px;border:2px solid var(--snake);
-  }
-  .btn-primary{background:var(--snake);color:#000;border-color:var(--snake-dark)}
-  .btn-primary:hover{filter:brightness(.95)}
-  .pill{border-radius:999px}
-
-  .biz-contact{margin-top:25px}
-  .biz-contact .row{display:flex;align-items:center;justify-content:flex-start;margin:2px 0}
-  .biz-contact a{color:#0b5e49;text-decoration:none;font-weight:700;margin-top: 0px;}
-
   /* Map */
   .map-embed iframe{border-radius:12px;border:1px solid var(--line);background:#ddd}
 
@@ -354,7 +326,105 @@
     padding:16px 18px;
     box-shadow:0 4px 16px rgba(0,0,0,.08);
   }
-  .about-pill h4{margin:0 0 6px;color: var(--snake); /* accent similar to screenshot titles */ }
+  .about-pill h4{margin:0 0 6px;color: var(--snake); }
   .about-pill p{margin:0;color:#374151}
-  .about-pill ul{margin:6px 0 0 18px;color:#374151}
-  .about-pill li{margin:6px 0}
+  .about-pill ul{margin:6px 0 0 18px;color:#ffffff}
+  .about-pill li{margin:6px 0;color:#fff}
+
+
+  /* Frosted glass business card in the bottom band */
+  .bottom-band .biz-card{
+    /* Frosted look */
+    background: rgba(255,255,255,0.10);   /* translucent so backdrop-filter shows */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.20);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+
+    /* Shape & spacing */
+    border-radius: 16px;
+    padding: 20px;
+    color: #f7f9fb;
+  }
+
+  /* Typography inside the card */
+  .bottom-band .biz-card h3{
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: #ffffff;
+    margin: 0 0 10px;
+  }
+  .bottom-band .biz-card .biz-block strong{ color:#ffffff; }
+  .bottom-band .biz-card p{ color:#e5e7eb; }
+
+  /* Logo sizing */
+  .bottom-band .biz-card .biz-logo{
+    width: 110px; height: 110px; object-fit: contain;
+    border-radius: 10px; display:block; margin-bottom:10px;
+  }
+
+  /* CTA button on frosted surface */
+  .bottom-band .biz-card .btn.btn-primary{
+    background: var(--snake);
+    border: 2px solid var(--snake-dark);
+    color: #000;
+    border-radius: 999px;
+    padding: 12px 16px;
+    box-shadow: 0 6px 18px rgba(57,255,20,.35);
+  }
+  .bottom-band .biz-card .btn.btn-primary:hover{
+    filter: brightness(.95);
+  }
+
+  /* Contact rows */
+  .bottom-band .biz-card .biz-contact{ margin-top: 20px; }
+  .bottom-band .biz-card .biz-contact .row{
+    display:flex; align-items:center; gap:8px; margin:4px 0;
+  }
+  .bottom-band .biz-card .biz-contact .row span{ color:#ffffff; }      /* emoji/icon */
+  .bottom-band .biz-card .biz-contact a{
+    color:#c8ffd0; text-decoration: underline; font-weight:700;
+  }
+
+  /* Frosted glass style for the About stack (right column) */
+  .bottom-band .about-pill{
+    background: rgba(255,255,255,0.10);   /* translucent for frost */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.20);
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+
+    border-radius: 16px;
+    padding: 16px 18px;
+    color: #f7f9fb;
+  }
+
+  /* Headings and text colors for contrast on the dark band */
+  .bottom-band .about-pill h4{
+    font-family: 'Anton', sans-serif;
+    font-weight: 900;
+    letter-spacing: .3px;
+    color: #ffffff;
+    margin: 0 0 6px;
+  }
+  .bottom-band .about-pill p{ color:#e5e7eb; margin:0; }
+
+  /* List styling (readable bullets + spacing) */
+  .bottom-band .about-pill ul{
+    margin: 6px 0 0 18px;
+    padding: 0;
+    color: #e5e7eb;
+  }
+  .bottom-band .about-pill li{
+    margin: 6px 0;
+  }
+
+  /* Optional: subtle snake-green accent line under each title */
+  .bottom-band .about-pill h4::after{
+    content:"";
+    display:block;
+    width:48px; height:3px;
+    background: rgba(57,255,20,.8);  /* snake green */
+    border-radius: 999px;
+    margin-top: 6px;
+  }
