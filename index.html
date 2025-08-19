@@ -37,8 +37,8 @@
   
       <!-- Right: phone + CTA (desktop only) -->
       <div class="nav-cta">
-        <a class="phone" href="tel:+17252599927">(725) 259-9927</a>
-        <a class="btn-primary pill" href="booking.html">Book Now</a>
+        <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
+        <a class="btn-primary pill cta-mobile" href="booking.html">Book Now</a>
       </div>
     </div>
   </header>
@@ -284,6 +284,70 @@
       });
     });
   </script>
+  <script>
+    const navLinks = [...document.querySelectorAll('.nav a.nav-link')];
+    const sectionIds = ['hero', 'services', 'contact'];     // make sure these IDs exist
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+  
+    function setActive(hash) {
+      navLinks.forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const h = href.includes('#') ? href.slice(href.indexOf('#')) : '';
+        a.classList.toggle('active', h === hash);
+      });
+    }
+  
+    function updateActiveByViewport() {
+      const headerH = document.querySelector('.site-header')?.offsetHeight || 0;
+      // choose a point in the viewport *below* the sticky header
+      const probe = headerH + (window.innerHeight - headerH) / 2;
+  
+      let current = null;
+      let bestDist = Infinity;
+  
+      for (const sec of sections) {
+        const r = sec.getBoundingClientRect();   // viewport coords
+        // if the probe point is inside this section, pick it immediately
+        if (r.top <= probe && r.bottom >= probe) {
+          current = sec;
+          break;
+        }
+        // otherwise, pick the section whose center is closest to the probe
+        const center = (r.top + r.bottom) / 2;
+        const dist = Math.abs(center - probe);
+        if (dist < bestDist) {
+          bestDist = dist;
+          current = sec;
+        }
+      }
+  
+      if (current) setActive('#' + current.id);
+    }
+  
+    // click: set immediately (and close mobile menu if open)
+    document.querySelectorAll('.nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        const href = a.getAttribute('href') || '';
+        const hash = href.includes('#') ? href.slice(href.indexOf('#')) : '';
+        if (hash) setActive(hash);
+        document.querySelector('.nav')?.classList.remove('open');
+        document.querySelector('.menu-pill')?.classList.remove('menu-open');
+      });
+    });
+  
+    // scroll & resize
+    window.addEventListener('scroll', updateActiveByViewport, { passive: true });
+    window.addEventListener('resize', updateActiveByViewport);
+  
+    // on load
+    if (location.hash) setActive(location.hash);
+    updateActiveByViewport();
+  </script>
+  
+  
+  
 
 </body>
 </html>
