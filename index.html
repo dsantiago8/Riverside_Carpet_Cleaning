@@ -50,7 +50,7 @@
   <section id="hero" class="hero">
     <div class="container hero-inner">
       <div class="copy">
-        <h1>The Best <span>COM</span> Cleaning</h1>
+        <h1>The Best <span id="cycling-text"> Carpet</span> Cleaning</h1>
         <p>The Best Carpet Cleaning in Las Vegas, backed by Our Guarantee!</p>
         <p>
 
@@ -357,7 +357,25 @@
     updateActiveByViewport();
   </script>
   
+  <script>
+    const words = ["Carpet", "Upholstery", "Tile & Grout"];
+    let i = 0;
+    const span = document.getElementById("cycling-text");
   
+    setInterval(() => {
+      // fade out
+      span.classList.add("fade-out");
+  
+      setTimeout(() => {
+        // switch word after fade
+        i = (i + 1) % words.length;
+        span.textContent = words[i];
+  
+        // fade back in
+        span.classList.remove("fade-out");
+      }, 600); // matches CSS transition
+    }, 1500); // change every 3s
+  </script>  
   
 
 </body>
