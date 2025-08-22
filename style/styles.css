@@ -244,11 +244,12 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      height:140px;
+      height:180px;
     }
     .card-icon svg{
-      width:110px; height:110px;
+      width:160px; height:160px;
       stroke:var(--cardBorder);
+      stroke-width: 2;
     }
     
     /* Text */
@@ -338,7 +339,7 @@
 
   @keyframes ba-scroll{
     from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }  /* because we duplicated tiles */
+    to   { transform: translateX(-50%); }  
   }
 
   /* Tiles */
