@@ -76,44 +76,70 @@
   
       <div class="service-grid">
         <!-- Service 1 -->
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true" fill="none" stroke="currentColor"
-              stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+        <article class="card flip-card">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" fill="none" stroke="currentColor"
+                  stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                
+                  <!-- Floor head (squeegee) -->
+                  <path d="M20 58 h18 a3 3 0 0 0 3-3 v-7 H28 l-9 3 a4 4 0 0 0-3 4 v1 h6" />
+                  <!-- Little front roller -->
+                  <circle cx="19" cy="60" r="2.6" />
+                
+                  <!-- Machine body (tall canister) -->
+                  <path d="M39 31
+                            c7-6 15-6 20-2
+                            v24
+                            a4 4 0 0 1-4 4
+                            H41
+                            a4 4 0 0 1-4-4
+                            v-12
+                            c0-4 1-8 6-10z" />
+                
+                  <!-- Big rear wheel -->
+                  <circle cx="54" cy="56" r="7.5" />
+                  <circle cx="54" cy="56" r="3.6" />
+                
+                  <!-- Hose sweeping from wand into the body -->
+                  <path d="M40 37
+                            c8-2 12 2 12 8" />
+                
+                  <!-- Upright frame behind body (subtle) -->
+                  <path d="M52 14 v26" />
+                  <path d="M48 14 h4 a2 2 0 0 1 2 2 v4" />
+                </svg>
+          
+              </div>
+              <h3>Carpet Cleaning</h3>
+              <p>Reliable, on-time service for homes, offices, and storefronts using eco-friendly solutions and fast-dry methods.</p>
+              <a class="btn btn-solid flip-btn" data-action="flip" href="#">LEARN MORE</a>
+            </div>
             
-              <!-- Floor head (squeegee) -->
-              <path d="M20 58 h18 a3 3 0 0 0 3-3 v-7 H28 l-9 3 a4 4 0 0 0-3 4 v1 h6" />
-              <!-- Little front roller -->
-              <circle cx="19" cy="60" r="2.6" />
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h4>What’s Included</h4>
+              <ul>
+                <li>Pre-inspection & spot treatment</li>
+                <li>Hot water extraction</li>
+                <li>Fast dry pass</li>
+                <li>Deodorize (optional)</li>
+              </ul>
+        
+              <h4>Great For</h4>
+              <p>Bedrooms, living rooms, offices, and hallways.</p>
+        
+              <div class="back-actions">
+                <a href="booking.html" class="btn btn-solid">BOOK THIS SERVICE</a>
+                <button class="btn outline flip-btn" data-action="unflip">BACK</button>
+              </div>
+            </div>
             
-              <!-- Machine body (tall canister) -->
-              <path d="M39 31
-                        c7-6 15-6 20-2
-                        v24
-                        a4 4 0 0 1-4 4
-                        H41
-                        a4 4 0 0 1-4-4
-                        v-12
-                        c0-4 1-8 6-10z" />
-            
-              <!-- Big rear wheel -->
-              <circle cx="54" cy="56" r="7.5" />
-              <circle cx="54" cy="56" r="3.6" />
-            
-              <!-- Hose sweeping from wand into the body -->
-              <path d="M40 37
-                        c8-2 12 2 12 8" />
-            
-              <!-- Upright frame behind body (subtle) -->
-              <path d="M52 14 v26" />
-              <path d="M48 14 h4 a2 2 0 0 1 2 2 v4" />
-            </svg>
-       
           </div>
-          <h3>Carpet Cleaning</h3>
-          <p>Reliable, on-time service for homes, offices, and storefronts using eco-friendly solutions and fast-dry methods.</p>
-          <a class="btn btn-solid" href="#">LEARN MORE</a>
+                  
+            
         </article>
   
         <!-- Service 2 -->
@@ -430,6 +456,23 @@
       }, 600); // matches CSS transition
     }, 1500); // change every 3s
   </script>  
+  
+  <script>
+    // Delegate clicks for all flip buttons
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('.flip-btn');
+      if(!btn) return;
+  
+      e.preventDefault();
+      const card = btn.closest('.flip-card');
+  
+      if(btn.dataset.action === 'flip'){
+        card.classList.add('flipped');
+      }else{
+        card.classList.remove('flipped');
+      }
+    });
+  </script>
   
 
 </body>
