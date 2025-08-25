@@ -7,7 +7,6 @@
     --cardShadow: 0 8px 24px rgba(0,0,0,.12);
     --slate:#3e4449;
     --charcoal:#2e3438;     /* deep charcoal band */
-
   }
   /* For the rest of the site text */
   body, p, li, a {
@@ -214,6 +213,7 @@
     display:grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap:24px;
+    align-items: stretch;
   }
   @media (max-width:1024px){
     .service-grid{ grid-template-columns: repeat(2, 1fr); }
@@ -228,6 +228,7 @@
     display:flex;
     flex-direction:column;
     gap:14px;
+    height: var(--card-h, auto);
   }
 
   /* put the visual frame on normal cards only */
@@ -276,6 +277,7 @@
   .flip-card{
     perspective: 1200px;           /* gives depth to the flip */
     background: transparent;       /* card background handled by faces */
+    height: var(--card-h, auto);
   }
 
   /* keep your existing .card styles, but move visuals to faces */
@@ -306,6 +308,7 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    height:100%;
   }
 
   /* front keeps your icon layout */
@@ -319,6 +322,8 @@
   /* back face */
   .card-back{
     transform: rotateY(180deg);
+    overflow: auto;
+    padding-bottom: 60px;
   }
   .card-back h4{ margin: 6px 0 2px; font-weight: 800; color: #111; }
   .card-back ul{ margin: 0 0 6px 18px; }
@@ -326,6 +331,15 @@
     margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap;
   }
 
+  /* Keep actions always visible at the bottom while scrolling the back */
+  .back-actions{
+    position: sticky;
+    bottom: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1) 40%);
+    padding-top: 12px;
+    margin-top: auto;              /* pushes it to the bottom of the flex column */
+  }
   .btn.outline{
     background: transparent;
     color: #111;
@@ -335,10 +349,10 @@
   }
 
   /* Ensure all flip cards are same height (use your existing grid card height) */
-  .flip-card{ height: 100%; }
-  .flip-card .card-face{ min-height: 420px; }     /* adjust to match your tallest card */
+  .flip-card{ height: var(--card-h, auto); }
+  .flip-card .card-face{ min-height: 0px; }     /* adjust to match your tallest card */
   @media (max-width: 700px){
-    .flip-card .card-face{ min-height: 560px; }   /* extra room on small screens if needed */
+    .flip-card .card-face{ min-height: 420px; }   /* extra room on small screens if needed */
   }
 
     
@@ -361,7 +375,7 @@
     filter:brightness(0.85);
   }
 
-    /* Bottom band layout */
+  /* Bottom band layout */
   .bottom-band{
     background:var(--slate);
     padding:28px 0 36px;

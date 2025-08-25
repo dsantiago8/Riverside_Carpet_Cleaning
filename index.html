@@ -136,31 +136,59 @@
                 <button class="btn outline flip-btn" data-action="unflip">BACK</button>
               </div>
             </div>
-            
           </div>
-                  
-            
         </article>
   
         <!-- Service 2 -->
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="2">
-              <!-- Sofa base -->
-              <rect x="8" y="28" width="48" height="16" rx="3" ry="3" fill="none"/>
-              <!-- Sofa back -->
-              <rect x="12" y="16" width="40" height="12" rx="2" ry="2" fill="none"/>
-              <!-- Sofa arms -->
-              <rect x="4" y="26" width="8" height="12" rx="2" ry="2" fill="none"/>
-              <rect x="52" y="26" width="8" height="12" rx="2" ry="2" fill="none"/>
-              <!-- Legs -->
-              <line x1="12" y1="44" x2="12" y2="50"/>
-              <line x1="52" y1="44" x2="52" y2="50"/>
-            </svg>
+        <article class="card flip-card">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="2">
+                  <!-- Sofa base -->
+                  <rect x="8" y="28" width="48" height="16" rx="3" ry="3" fill="none"/>
+                  <!-- Sofa back -->
+                  <rect x="12" y="16" width="40" height="12" rx="2" ry="2" fill="none"/>
+                  <!-- Sofa arms -->
+                  <rect x="4" y="26" width="8" height="12" rx="2" ry="2" fill="none"/>
+                  <rect x="52" y="26" width="8" height="12" rx="2" ry="2" fill="none"/>
+                  <!-- Legs -->
+                  <line x1="12" y1="44" x2="12" y2="50"/>
+                  <line x1="52" y1="44" x2="52" y2="50"/>
+                </svg>
+              </div>
+              <h3>Upholstery Cleaning</h3>
+              <p>Deep cleaning for sofas, chairs, and sectionals. Safe for kids, pets, and delicate fabrics.</p>
+              <a class="btn btn-solid flip-btn" data-action="flip" href="#">LEARN MORE</a>
+            </div>
+
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h4>What’s Included</h4>
+              <ul>
+                <!-- <li>Fabric ID &amp; colorfast test</li> -->
+                <li>Pre-vacuum &amp; targeted spot treatment</li>
+                <li>Hot-water extraction with upholstery tool</li>
+                <li>Deodorize &amp; pH balance</li>
+                <li>Speed-dry air movement (when possible)</li>
+              </ul>
+
+              <h4>Great For</h4>
+              <p>Sofas, love seats, chairs, sectionals, ottomans, and cushions.</p>
+
+              <h4>Add-Ons</h4>
+              <ul>
+                <li>Fabric protector</li>
+                <li>Pet enzyme treatment</li>
+                <li>Sanitizer</li>
+              </ul>
+
+              <div class="back-actions">
+                <a href="booking.html#upholstery" class="btn btn-solid">BOOK THIS SERVICE</a>
+                <button class="btn outline flip-btn" data-action="unflip">BACK</button>
+              </div>
+            </div>
           </div>
-          <h3>Upholstery Cleaning</h3>
-          <p>Deep cleaning for sofas, chairs, and sectionals. Safe for kids, pets, and delicate fabrics.</p>
-          <a class="btn btn-solid" href="#">LEARN MORE</a>
         </article>
   
         <!-- Service 3 -->
@@ -192,7 +220,7 @@
           </div>
           <h3>Tile & Grout Cleaning</h3>
           <p>Restore tile and grout to like-new with hot water extraction and optional sealant for long-lasting protection.</p>
-          <a class="btn btn-solid" href="#">COMING SOON</a>
+          <a class="btn btn-solid flip-btn" data-action="flip" href="#">COMING SOON</a>
         </article>
       </div>
     </div>
@@ -471,6 +499,37 @@
       }else{
         card.classList.remove('flipped');
       }
+    });
+  </script>
+  
+  <script>
+    function equalizeServiceCards() {
+      const cards = document.querySelectorAll('.service-grid .card');
+      let maxH = 0;
+  
+      // reset any inline heights before measuring
+      cards.forEach(card => {
+        const front = card.querySelector('.card-front') || card; // non-flip cards OK
+        front.style.height = 'auto';
+      });
+  
+      // find tallest front
+      cards.forEach(card => {
+        const front = card.querySelector('.card-front') || card;
+        const h = front.offsetHeight;
+        if (h > maxH) maxH = h;
+      });
+  
+      // set the CSS var used by .card / .flip-card
+      document.documentElement.style.setProperty('--card-h', maxH + 'px');
+    }
+  
+    // run on load (after fonts/images) and on resize
+    window.addEventListener('load', equalizeServiceCards);
+    let _eqTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(_eqTimer);
+      _eqTimer = setTimeout(equalizeServiceCards, 150);
     });
   </script>
   
