@@ -1,0 +1,5 @@
+name = "riverside-cleansing"
+compatibility_date = "2025-08-31"
+
+[assets]
+directory = "./public"
