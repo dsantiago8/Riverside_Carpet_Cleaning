@@ -11,12 +11,11 @@
   integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="style/styles.css" />
   <link rel="preload" as="image"
-      href="images/hero-960.webp"
-      imagesrcset="images/hero-640.webp 640w,
-                   images/hero-960.webp 960w,
-                   images/hero-1280.webp 1280w"
-      imagesizes="100vw">
-
+    href="/images/hero-960.webp"
+    imagesrcset="/images/hero-640.webp 640w,
+                /images/hero-960.webp 960w,
+                /images/hero-1280.webp 1280w"
+    imagesizes="(min-width: 1280px) 1280px, 100vw">
 </head>
 <body>
   <!-- Top bar -->
@@ -256,66 +255,171 @@
 
       <div class="ba-scroller" aria-label="Before and after gallery">
         <div class="ba-track">
+
           <!-- Tile 1 -->
           <figure class="ba-tile">
-            <img src="images/before_1.PNG" alt="Room carpet before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_1-320.webp 320w, /images/before_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_1.PNG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_1.jpg" alt="Room carpet after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_1-320.webp 320w, /images/after_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_1.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
 
           <!-- Tile 2 -->
           <figure class="ba-tile">
-            <img src="images/before_2.JPEG" alt="Stairs before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_2-320.webp 320w, /images/before_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_2.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_2.jpg" alt="Stairs after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_2-320.webp 320w, /images/after_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_2.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
 
           <!-- Tile 3 -->
           <figure class="ba-tile">
-            <img src="images/before_3.JPEG" alt="Dirty Carpet Stairs">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_3-320.webp 320w, /images/before_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Dirty carpet stairs before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_3.JPEG" alt="Carpet after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_3-320.webp 320w, /images/after_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Carpet stairs after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
 
-          <!-- DUPLICATES for seamless loop (repeat the same tiles once) -->
+          <!-- DUPLICATES for seamless loop -->
           <figure class="ba-tile">
-            <img src="images/before_1.PNG" alt="Room carpet before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_1-320.webp 320w, /images/before_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_1.PNG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_1.jpg" alt="Room carpet after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_1-320.webp 320w, /images/after_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_1.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
+
           <figure class="ba-tile">
-            <img src="images/before_2.JPEG" alt="Stairs before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_2-320.webp 320w, /images/before_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_2.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_2.jpg" alt="Stairs after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_2-320.webp 320w, /images/after_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_2.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
+
           <figure class="ba-tile">
-            <img src="images/before_3.JPEG" alt="Tile grout before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_3-320.webp 320w, /images/before_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Tile grout before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_3.JPEG" alt="Tile grout after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_3-320.webp 320w, /images/after_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Tile grout after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
+
         </div>
       </div>
     </div>
   </section>
-
 
   <section id= "contact" class="bottom-band">
     <div class="container band-grid">
