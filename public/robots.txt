@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://riverside-carpet-cleaning.pages.dev/sitemap.xml
+Sitemap: https://riversidecarpetcleaninglv.com/sitemap.xml
