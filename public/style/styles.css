@@ -597,3 +597,19 @@
     margin-top: 12px;
   }
 
+  /* Pricing preview strip (below Services) */
+  .pricing-preview-strip {
+    background: var(--charcoal);
+    border-top: 3px solid rgba(76,175,80,.4);
+    border-bottom: 3px solid rgba(76,175,80,.4);
+    padding: 16px 0;
+    text-align: center;
+    color: #f3f4f6;
+  }
+  .pricing-preview-inner p { margin: 0; line-height: 1.6; }
+  .pricing-preview-inner strong { color: var(--snake); font-size: 1.1rem; }
+  .pricing-preview-inner a {
+    color: var(--snake); font-weight: 700; text-decoration: underline;
+  }
+  .pricing-preview-min { font-size: .9rem; color: #9ca3af; }
+

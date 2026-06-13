@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <meta name="description"
+      content="Riverside Carpet Cleaning pricing — carpet cleaning starting at $55/room, upholstery cleaning, add-ons, and carpet conditioning. Serving Las Vegas, Providence & Northwest Vegas." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png?v=2">
+  <title>Pricing | Riverside Carpet Cleaning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --snake: #4CAF50;
+      --snake-dark: #27c90b;
+      --ink: #111;
+      --paper: #f5f5f5;
+      --white: #fff;
+      --cardBorder: #27c90b;
+      --cardShadow: 0 8px 24px rgba(0,0,0,.12);
+      --slate: #3e4449;
+      --charcoal: #2e3438;
+      --line: #e6e8ef;
+      --muted: #6b7280;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+
+    body {
+      font-family: 'Open Sans', Segoe UI, system-ui, -apple-system, Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.5;
+      background: var(--paper);
+    }
+
+    a { color: inherit; }
+
+    /* ── Header ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 2px 18px rgba(0,0,0,.06);
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .nav-row {
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 16px; height: 110px;
+    }
+
+    /* Brand */
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .brand img { width: 115px; height: 115px; object-fit: contain; border-radius: 8px; }
+    .brand-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.8rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+
+    /* Nav */
+    .nav { display: flex; gap: 20px; justify-content: center; }
+    .nav-link {
+      position: relative; text-decoration: none; color: #1f2937;
+      font-weight: 600; padding: 6px 2px;
+    }
+    .nav-link:hover { color: #0b5e49; }
+    .nav-link.active::after,
+    .nav-link:hover::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -10px;
+      height: 3px; background: var(--snake); border-radius: 999px;
+    }
+
+    /* Right side */
+    .nav-cta { display: flex; align-items: center; gap: 14px; }
+    .phone {
+      color: #0b5e49; text-decoration: none; font-weight: 800;
+      padding: 6px 10px; border-radius: 8px; background: #ecfdf5;
+    }
+    .btn-primary {
+      display: inline-block; font-weight: 900; text-decoration: none; color: #000;
+      background: var(--snake); border: 2px solid var(--snake-dark);
+      padding: 10px 14px; border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(57,255,20,.25);
+    }
+    .btn-primary:hover { filter: brightness(.95); }
+    .pill { border-radius: 999px; }
+
+    /* Menu pill (mobile) */
+    .menu-pill {
+      appearance: none; border: 1px solid var(--line);
+      background: #fff; color: #111; font-weight: 700;
+      height: 40px; padding: 0 12px; border-radius: 999px;
+      display: none; align-items: center; gap: 8px; cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .menu-pill:focus-visible { outline: 2px solid var(--snake); outline-offset: 2px; }
+    .menu-icon,
+    .menu-icon::before,
+    .menu-icon::after {
+      content: ""; display: block; width: 18px; height: 2px;
+      background: #111; border-radius: 2px;
+    }
+    .menu-icon::before { transform: translateY(-6px); }
+    .menu-icon::after  { transform: translateY( 4px); }
+    .menu-open .menu-icon            { background: transparent; }
+    .menu-open .menu-icon::before    { transform: rotate(45deg); }
+    .menu-open .menu-icon::after     { transform: rotate(-45deg); }
+
+    @media (max-width: 900px) {
+      .nav-row { grid-template-columns: auto 1fr auto; height: 72px; }
+      .brand img { width: 44px; height: 44px; }
+      .brand-title { font-size: 1.1rem; letter-spacing: .5px; }
+      html { scroll-padding-top: 72px; }
+
+      .menu-pill { display: flex; }
+      .nav-cta   { display: none; }
+
+      .nav {
+        position: absolute; left: 0; right: 0; top: 72px;
+        background: #fff; border-bottom: 1px solid var(--line);
+        display: none; flex-direction: column; padding: 6px 0;
+        box-shadow: 0 10px 24px rgba(0,0,0,.08);
+      }
+      .nav.open { display: flex; }
+
+      .nav-link {
+        padding: 14px 24px; font-size: 1.05rem;
+        border-bottom: 1px solid rgba(0,0,0,.05);
+      }
+      .nav-link:last-of-type { border-bottom: none; }
+      .nav-link::after { content: none; }
+
+      .phone-mobile {
+        display: block; margin: 8px 24px; padding: 10px 12px;
+        background: #ecfdf5; color: #0b5e49; text-decoration: none;
+        font-weight: 800; border-radius: 8px; text-align: center;
+      }
+      .cta-mobile {
+        display: block; margin: 6px 24px 14px; text-align: center;
+        box-shadow: 0 6px 18px rgba(57,255,20,.25);
+      }
+    }
+
+    /* ── Page hero banner ── */
+    .page-hero {
+      background: var(--snake);
+      color: var(--white);
+      padding: 48px 0 40px;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.8rem; line-height: 1.1; margin-bottom: 12px;
+    }
+    .page-hero p { font-size: 1.1rem; opacity: .9; max-width: 52ch; margin: 0 auto 20px; }
+    .page-hero .hero-cta {
+      display: inline-block; background: #000; color: #fff;
+      font-weight: 800; text-decoration: none;
+      padding: 12px 28px; border-radius: 8px;
+    }
+    .page-hero .hero-cta:hover { background: #222; }
+
+    /* ── Notice bar ── */
+    .notice-bar {
+      background: var(--charcoal);
+      color: #e5e7eb;
+      text-align: center;
+      padding: 12px 24px;
+      font-size: .95rem;
+      border-bottom: 3px solid rgba(76,175,80,.4);
+    }
+    .notice-bar strong { color: var(--snake); }
+
+    /* ── Pricing sections ── */
+    .pricing-section {
+      padding: 56px 0;
+    }
+    .pricing-section:nth-child(odd) { background: var(--white); }
+    .pricing-section:nth-child(even) { background: var(--paper); }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-header h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .section-header p {
+      color: var(--muted);
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+    .section-header .accent-line {
+      display: block;
+      width: 56px; height: 4px;
+      background: var(--snake);
+      border-radius: 999px;
+      margin: 10px auto 0;
+    }
+
+    /* ── Price cards grid ── */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .price-card {
+      background: var(--white);
+      border: 2px solid var(--cardBorder);
+      border-radius: 12px;
+      box-shadow: var(--cardShadow);
+      padding: 24px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .price-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 32px rgba(0,0,0,.15);
+    }
+    .price-card .card-name {
+      font-weight: 700; font-size: 1.05rem; color: var(--charcoal);
+    }
+    .price-card .card-detail {
+      font-size: .85rem; color: var(--muted); min-height: 36px;
+    }
+    .price-card .card-price {
+      font-size: 2rem; font-weight: 900; color: #065f46; margin-top: 6px;
+    }
+    .price-card .card-unit {
+      font-size: .8rem; color: var(--muted); font-weight: 600; margin-top: -4px;
+    }
+
+    /* ── Add-ons table ── */
+    .addons-section {
+      background: var(--slate);
+      color: var(--white);
+      padding: 52px 0;
+    }
+    .addons-section .section-header h2 { color: var(--white); }
+    .addons-section .section-header p  { color: #c8ffd0; }
+
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .addon-card {
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-left: 4px solid var(--snake);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .addon-card .addon-name { font-weight: 700; }
+    .addon-card .addon-desc { font-size: .85rem; color: #c8ffd0; margin-top: 2px; }
+    .addon-card .addon-price {
+      font-size: 1.4rem; font-weight: 900; color: var(--snake);
+      white-space: nowrap;
+    }
+    .addon-card .addon-unit { font-size: .75rem; color: #a3e6b0; text-align: right; }
+
+    /* ── Minimum notice ── */
+    .minimum-notice {
+      background: #ecfdf5;
+      border: 2px solid var(--snake);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .minimum-notice .min-icon {
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+    .minimum-notice strong { color: #065f46; }
+    .minimum-notice p { margin: 0; color: #374151; }
+
+    /* ── CTA footer band ── */
+    .cta-band {
+      background: var(--charcoal);
+      padding: 48px 0;
+      text-align: center;
+      color: var(--white);
+    }
+    .cta-band h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: 2rem; margin-bottom: 10px;
+    }
+    .cta-band p { color: #c8ffd0; margin-bottom: 28px; }
+    .cta-band .btn-book {
+      display: inline-block; background: var(--snake); color: #000;
+      font-weight: 900; text-decoration: none;
+      padding: 14px 36px; border-radius: 999px;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 24px rgba(57,255,20,.35);
+      border: 2px solid var(--snake-dark);
+    }
+    .cta-band .btn-book:hover { filter: brightness(.9); }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .page-hero h1 { font-size: 2rem; }
+      .price-grid { grid-template-columns: 1fr 1fr; }
+      .addons-grid { grid-template-columns: 1fr; }
+      .addon-card { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 420px) {
+      .price-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Riverside Carpet Cleaning logo">
+        <span class="brand-title">Riverside Carpet Cleaning</span>
+      </a>
+
+      <button class="menu-pill" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-icon"></span>
+        <span class="menu-text">Menu</span>
+      </button>
+
+      <nav class="nav">
+        <a href="index.html#hero" class="nav-link">Home</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link active">Pricing</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+        <div class="nav-cta"></div>
+          <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
+          <a class="btn-primary pill cta-mobile" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+        </div>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="phone" href="tel:+17252599927">(725) 259-9927</a>
+        <a class="btn-primary pill" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Page hero ── -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Clear, Simple Pricing</h1>
+      <p>No hidden fees. No surprises. Just honest rates for a cleaner home.</p>
+      <a class="hero-cta" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Your Clean →</a>
+    </div>
+  </section>
+
+  <!-- ── Notice bar ── -->
+  <div class="notice-bar">
+    <strong>$100 minimum per visit.</strong>&nbsp; Bundle multiple rooms or services for the best value. Pet urine, colored stains, and heavy odors may incur additional charges.
+  </div>
+
+  <!-- ── Carpet Cleaning ── -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>🧹 Carpet Cleaning</h2>
+        <p>Hot water extraction — the deepest clean available. Starting at $55/room.</p>
+        <span class="accent-line"></span>
+      </div>
+
+      <div class="minimum-notice">
+        <div class="min-icon">ℹ️</div>
+        <p><strong>$100 minimum per visit.</strong> This applies to all appointments regardless of the number of rooms or services selected.</p>
+      </div>
+
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="card-name">Standard Room</div>
+          <div class="card-detail">Up to 144 sq ft — bedroom, dining room, living room</div>
+          <div class="card-price">$55</div>
+          <div class="card-unit">per room</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Medium Room</div>
+          <div class="card-detail">Up to 288 sq ft — open living areas, large bedrooms</div>
+          <div class="card-price">$75</div>
+          <div class="card-unit">per room</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Large Room</div>
+          <div class="card-detail">Up to 432 sq ft — bonus rooms, open floor plans</div>
+          <div class="card-price">$95</div>
+          <div class="card-unit">per room</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Hallway</div>
+          <div class="card-detail">Up to 56 sq ft — great add-on with any room</div>
+          <div class="card-price">$25</div>
+          <div class="card-unit">per hallway</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Stairs</div>
+          <div class="card-detail">Up to 14 steps — single staircase flight</div>
+          <div class="card-price">$35</div>
+          <div class="card-unit">per flight</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Upholstery Cleaning ── -->
+  <section class="pricing-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>🛋️ Upholstery Cleaning</h2>
+        <p>Safe for kids, pets, and delicate fabrics. Sofas, loveseats, sectionals & more.</p>
+        <span class="accent-line"></span>
+      </div>
+
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="card-name">Recliner Chair</div>
+          <div class="card-detail">Single recliner or one-seater chair</div>
+          <div class="card-price">$50</div>
+          <div class="card-unit">per piece</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Loveseat</div>
+          <div class="card-detail">2-seat sofa or loveseat</div>
+          <div class="card-price">$85</div>
+          <div class="card-unit">per piece</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Sofa — 3 Seater</div>
+          <div class="card-detail">Standard 3-seat sofa</div>
+          <div class="card-price">$135</div>
+          <div class="card-unit">per piece</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Sectional — 4 Seater</div>
+          <div class="card-detail">4-seat sectional sofa</div>
+          <div class="card-price">$185</div>
+          <div class="card-unit">per piece</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">Sectional — 5 Seater</div>
+          <div class="card-detail">5-seat sectional sofa</div>
+          <div class="card-price">$240</div>
+          <div class="card-unit">per piece</div>
+        </div>
+        <div class="price-card">
+          <div class="card-name">L-Shape Sectional</div>
+          <div class="card-detail">6-seat L-shape or similar size</div>
+          <div class="card-price">$300</div>
+          <div class="card-unit">per piece</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Add-ons & Carpet Conditioning ── -->
+  <section class="addons-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>✨ Add-Ons & Carpet Conditioning</h2>
+        <p>Boost your clean and protect your investment with these optional treatments.</p>
+        <span class="accent-line"></span>
+      </div>
+
+      <div class="addons-grid">
+        <div class="addon-card">
+          <div>
+            <div class="addon-name">Carpet Conditioning</div>
+            <div class="addon-desc">Softens fibers & restores texture after cleaning</div>
+          </div>
+          <div>
+            <div class="addon-price">$20</div>
+            <div class="addon-unit">per room</div>
+          </div>
+        </div>
+        <div class="addon-card">
+          <div>
+            <div class="addon-name">Deodorizer</div>
+            <div class="addon-desc">Eliminates odors at the source</div>
+          </div>
+          <div>
+            <div class="addon-price">$15</div>
+            <div class="addon-unit">per room</div>
+          </div>
+        </div>
+        <div class="addon-card">
+          <div>
+            <div class="addon-name">Pet Enzyme Treatment</div>
+            <div class="addon-desc">Breaks down pet urine and biological odors</div>
+          </div>
+          <div>
+            <div class="addon-price">$25</div>
+            <div class="addon-unit">per room</div>
+          </div>
+        </div>
+        <div class="addon-card">
+          <div>
+            <div class="addon-name">Fabric Protector</div>
+            <div class="addon-desc">Shields upholstery from future stains</div>
+          </div>
+          <div>
+            <div class="addon-price">$20</div>
+            <div class="addon-unit">per piece</div>
+          </div>
+        </div>
+        <div class="addon-card">
+          <div>
+            <div class="addon-name">Sanitizer Treatment</div>
+            <div class="addon-desc">Hospital-grade sanitizer for allergen control</div>
+          </div>
+          <div>
+            <div class="addon-price">$20</div>
+            <div class="addon-unit">per room</div>
+          </div>
+        </div>
+        <div class="addon-card">
+          <div>
+            <div class="addon-name">Spot Pre-Treatment</div>
+            <div class="addon-desc">Targeted treatment for stubborn stains</div>
+          </div>
+          <div>
+            <div class="addon-price">$15</div>
+            <div class="addon-unit">per spot</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA band ── -->
+  <section class="cta-band">
+    <div class="container">
+      <h2>Ready for a Fresher Home?</h2>
+      <p>Book online in minutes — no phone call needed. $100 minimum per visit.</p>
+      <a class="btn-book" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+    </div>
+  </section>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-pill');
+    const nav     = document.querySelector('.nav');
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuBtn.classList.toggle('menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    document.querySelectorAll('.nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuBtn.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
