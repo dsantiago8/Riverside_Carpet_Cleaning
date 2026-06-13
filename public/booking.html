@@ -210,6 +210,23 @@
     box-shadow:0 6px 18px rgba(57,255,20,.25);
   }
 }
+  /* Section dividers in catalog */
+  .catalog-section-header {
+    grid-column: 1 / -1;
+    padding: 12px 0 4px;
+    border-bottom: 2px solid var(--snake);
+    margin-bottom: 4px;
+  }
+  .catalog-section-header h2 {
+    font-size: 18px;
+    font-weight: 800;
+    color: #1f2937;
+  }
+  .catalog-section-header p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
 
 </style>
 </head>
@@ -233,6 +250,7 @@
       <nav class="nav">
         <a href="index.html#hero" class="nav-link">Home</a>
         <a href="index.html#services" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="index.html#contact" class="nav-link">Contact</a>
         <div class="nav-cta"></div>
           <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
@@ -298,49 +316,45 @@
 
 <script>
 /* ------- Data (replace images/prices as you like) ------- */
-const PRODUCTS = [
+const CARPET_PRODUCTS = [
   {
     id:'std-room',
     name:'Standard size room up to 144 sq ft',
     desc:'Any bedroom, dining room, living room…',
-    price:40,
+    price:55,
     img:'images/standard_room_size.jpg'
   },
   {
     id:'med-room',
     name:'Medium room up to 288 sq ft',
     desc:'Any room or area up to 288 sq ft.',
-    price:68,
+    price:75,
     img:'images/medium_room.jpg'
   },
   {
     id:'large-room',
     name:'Large room up to 432 sq ft',
     desc:'Any room or double area up to 432  sq ft.',
-    price:92,
+    price:95,
     img:'images/large_room.jpg'
-  },
-  {
-    id:'stairs',
-    name:'Stair Flights',
-    desc:'Single staircase (up to 14 steps).',
-    price:30,
-    img:'images/stairs.jpg'
   },
   {
     id:'hall',
     name:'Small Hallway up to 56 sq ft',
     desc:'Hall/landing area. Great add-on.',
-    price:15,
+    price:25,
     img:'images/hall.jpg'
   },
   {
-    id:'recliner',
-    name:'Recliner Chair',
-    desc:'Recliners and one seaters',
-    price:50,
-    img:'images/recliner.jpg'
-  },
+    id:'stairs',
+    name:'Stair Flights',
+    desc:'Single staircase (up to 14 steps).',
+    price:35,
+    img:'images/stairs.jpg'
+  }
+];
+
+const UPHOLSTERY_PRODUCTS = [
   {
     id:'loveseat',
     name:'Loveseat',
@@ -375,8 +389,17 @@ const PRODUCTS = [
     desc:'6 seater L-shape or similar in size',
     price:300,
     img:'images/l-shape.jpg'
+  },
+  {
+    id:'recliner',
+    name:'Recliner Chair',
+    desc:'Recliners and one seaters',
+    price:50,
+    img:'images/recliner.jpg'
   }
 ];
+
+const PRODUCTS = [...CARPET_PRODUCTS, ...UPHOLSTERY_PRODUCTS];
 
 const state = {
   view:'grid',
@@ -438,11 +461,41 @@ function listRow(product){
 function renderCatalog(){
   const wrap = el('#catalog');
   wrap.className = state.view === 'grid' ? 'grid' : 'list';
-  const items = PRODUCTS.filter(p =>
-    p.name.toLowerCase().includes(state.filter) ||
-    p.desc.toLowerCase().includes(state.filter)
-  );
-  wrap.innerHTML = items.map(p => state.view==='grid'?card(p):listRow(p)).join('');
+
+  function filterProducts(list) {
+    return list.filter(p =>
+      p.name.toLowerCase().includes(state.filter) ||
+      p.desc.toLowerCase().includes(state.filter)
+    );
+  }
+
+  const carpetItems    = filterProducts(CARPET_PRODUCTS);
+  const upholsteryItems = filterProducts(UPHOLSTERY_PRODUCTS);
+  const renderFn = state.view === 'grid' ? card : listRow;
+
+  let html = '';
+
+  if (carpetItems.length) {
+    html += `<div class="catalog-section-header">
+      <h2>🧹 Carpet Cleaning</h2>
+      <p>Hot water extraction — fast dry, kid &amp; pet safe</p>
+    </div>`;
+    html += carpetItems.map(renderFn).join('');
+  }
+
+  if (upholsteryItems.length) {
+    html += `<div class="catalog-section-header">
+      <h2>🛋️ Upholstery Cleaning</h2>
+      <p>Sofas, loveseats, sectionals &amp; recliners</p>
+    </div>`;
+    html += upholsteryItems.map(renderFn).join('');
+  }
+
+  if (!carpetItems.length && !upholsteryItems.length) {
+    html = `<p style="color:var(--muted);padding:16px 0">No services match your search.</p>`;
+  }
+
+  wrap.innerHTML = html;
 }
 
 /* ------- Cart ------- */
