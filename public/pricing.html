@@ -388,11 +388,11 @@ const state = {
 const el = sel => document.querySelector(sel);
 
 /* ------- Render Catalog ------- */
-function qtyStepper(id){
+function qtyStepper(id, label){
   return `
     <div class="qty" data-for="${id}">
       <button type="button" class="qminus">−</button>
-      <input type="number" min="1" value="1" aria-label="Quantity for ${id}" />
+      <input type="number" min="1" value="1" aria-label="Quantity for ${label}" />
       <button type="button" class="qplus">+</button>
     </div>
   `;
@@ -409,7 +409,7 @@ function card(product){
         <div><span class="price">$${product.price.toFixed(2)}</span><span class="unit">/each</span></div>
       </div>
       <div class="controls">
-        ${qtyStepper(product.id)}
+        ${qtyStepper(product.id, product.name)}
         <button class="btn add" data-id="${product.id}">Add to Cart</button>
       </div>
     </div>
@@ -428,7 +428,7 @@ function listRow(product){
         <div><span class="price">$${product.price.toFixed(2)}</span><span class="unit">/each</span></div>
       </div>
       <div class="controls">
-        ${qtyStepper(product.id)}
+        ${qtyStepper(product.id, product.name)}
         <button class="btn add" data-id="${product.id}">Add to Cart</button>
       </div>
     </div>
@@ -529,7 +529,7 @@ el('#applyCoupon').addEventListener('click', ()=>{
   const code = el('#coupon').value.trim().toUpperCase();
   state.coupon = (code==='GREEN10') ? 'GREEN10' : null;
   renderCart();
-  el('#couponMsg').textContent = state.coupon ? '' : 'Invalid coupon. Try GREEN10.';
+  el('#couponMsg').textContent = state.coupon ? '' : 'Invalid coupon code. Please check and try again.';
 });
 
 el('#continue').addEventListener('click', ()=>{
@@ -546,7 +546,7 @@ renderCart();
   const nav = document.querySelector('.nav');
 
   menuBtn?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
+    const isOpen = nav?.classList.toggle('open');
     menuBtn.classList.toggle('menu-open', isOpen);
     menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
