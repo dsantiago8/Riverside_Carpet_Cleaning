@@ -48,9 +48,9 @@
     cursor:pointer;font-weight:600;font-size:14px
   }
   .btn:hover{border-color:#d3d7e0}
-  .btn-primary{background:var(--snake);border-color:var(--snake-dark);font-weight:800}
-  .btn-primary:hover{filter:brightness(.95)}
-  .pill{border-radius:999px;padding:10px 14px}
+  .btn-accent{background:var(--snake);border-color:var(--snake-dark);font-weight:800}
+  .btn-accent:hover{filter:brightness(.95)}
+  .pill{border-radius:999px}
 
   /* Grid/List */
   .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
@@ -151,7 +151,6 @@
     padding:10px 14px; border-radius:10px; box-shadow:0 6px 18px rgba(76,175,80,.25);
   }
   .btn-primary:hover{ filter:brightness(.95); }
-  .pill{ border-radius:999px; }
 
   /* Menu pill (mobile trigger) */
   .menu-pill{
@@ -289,7 +288,7 @@
           <div class="lineR grand"><span>Total</span><span id="grand">$0.00</span></div>
         </div>
 
-        <button class="btn btn-primary pill" id="continue">Book Now »</button>
+        <button class="btn btn-accent pill" id="continue">Book Now »</button>
         <div class="muted" style="margin-top:8px;">Ready to schedule? Continue to secure online booking.</div>
       </aside>
     </div>
@@ -315,7 +314,7 @@ const PRODUCTS = [
   {
     id:'large-room',
     name:'Large room up to 432 sq ft',
-    desc:'Any room or double area up to 432  sq ft.',
+    desc:'Any room or double area up to 432 sq ft.',
     price:92,
     img:'images/large_room.jpg'
   },
