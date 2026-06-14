@@ -5,24 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pricing – Riverside Carpet Cleaning</title>
   <meta name="description" content="Clear, honest pricing for carpet cleaning, upholstery cleaning, stairs, and hallways in Las Vegas. No hidden fees." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #1a6fb5;
-      --blue-dark: #145a94;
-      --blue-light: #e8f2fc;
-      --green: #2eaa6e;
-      --green-light: #e6f7f0;
-      --text: #1a1a2e;
+      --blue: #4CAF50;
+      --blue-dark: #399638;
+      --blue-light: #ecfdf5;
+      --green: #4CAF50;
+      --green-light: #ecfdf5;
+      --text: #111;
       --muted: #5a6370;
       --border: #e2e8f0;
       --white: #ffffff;
-      --bg: #f8fafc;
+      --bg: #f5f5f5;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color: var(--text);
       background: var(--white);
       line-height: 1.6;
@@ -86,19 +89,20 @@
       transition: background 0.2s, transform 0.1s;
       cursor: pointer;
     }
-    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary { background: var(--blue); color: #000; font-weight: 900; }
     .btn-primary:hover { background: var(--blue-dark); }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      background: var(--blue);
       color: var(--white);
       text-align: center;
       padding: 64px 24px 56px;
     }
     .hero h1 {
+      font-family: 'Anton', sans-serif;
       font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 800;
+      font-weight: normal;
       margin-bottom: 14px;
     }
     .hero p {
@@ -108,8 +112,8 @@
       margin: 0 auto 28px;
     }
     .btn-white {
-      background: var(--white);
-      color: var(--blue);
+      background: #000;
+      color: #fff;
       font-weight: 700;
       padding: 14px 32px;
       border-radius: 6px;
@@ -138,7 +142,7 @@
     section { padding: 56px 24px; }
     section:nth-child(even) { background: var(--bg); }
     .section-inner { max-width: 900px; margin: 0 auto; }
-    .section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .section-title { font-family: 'Anton', sans-serif; font-size: 1.6rem; font-weight: normal; margin-bottom: 8px; }
     .section-sub { color: var(--muted); margin-bottom: 32px; font-size: 0.98rem; }
 
     /* ── PRICING TABLES ── */
@@ -149,7 +153,7 @@
       overflow: hidden;
       box-shadow: 0 1px 6px rgba(0,0,0,0.07);
     }
-    .price-table thead { background: var(--blue); color: var(--white); }
+    .price-table thead { background: #3e4449; color: var(--white); }
     .price-table thead th {
       padding: 14px 20px;
       text-align: left;
@@ -258,7 +262,7 @@
 
     /* ── CTA ── */
     .cta-section {
-      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      background: #3e4449;
       color: var(--white);
       text-align: center;
       padding: 56px 24px;
