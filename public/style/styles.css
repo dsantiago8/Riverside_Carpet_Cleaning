@@ -353,10 +353,7 @@
 
   /* Ensure all flip cards are same height (use your existing grid card height) */
   .flip-card{ height: var(--card-h, auto); }
-  .flip-card .card-face{ min-height: 0px; }     /* adjust to match your tallest card */
-  @media (max-width: 700px){
-    .flip-card .card-face{ min-height: 420px; }   /* extra room on small screens if needed */
-  }
+  .flip-card .card-face{ min-height: 420px; }
 
     
   /* Button */
