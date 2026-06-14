@@ -1,5 +1,6 @@
 :root{
     --snake:#4CAF50;       
+    --snake-dark:#27c90b;  /* darker green for borders/accents */
     --ink:#111;            /* dark text */
     --paper:#f5f5f5;       /* light gray bar */
     --white:#fff;
@@ -7,6 +8,9 @@
     --cardShadow: 0 8px 24px rgba(0,0,0,.12);
     --slate:#3e4449;
     --charcoal:#2e3438;     /* deep charcoal band */
+    --hair:#e6e8ef;        /* subtle border color */
+    --line:#e6e8ef;        /* alias for --hair */
+    --muted:#6b7280;       /* muted/secondary text */
   }
   /* For the rest of the site text */
   body, p, li, a {
