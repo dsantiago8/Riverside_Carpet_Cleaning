@@ -98,6 +98,7 @@
   .rm{background:none;border:none;color:#ef4444;cursor:pointer}
   .coupon{display:flex;gap:8px;margin:12px 0}
   .coupon input{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px}
+  .coupon-feedback{color:#b91c1c;font-size:13px;margin-top:-6px;margin-bottom:8px}
   .totals{display:grid;gap:6px;margin:10px 0}
   .lineR{display:flex;justify-content:space-between}
   .grand{font-size:18px;font-weight:900}
@@ -234,7 +235,7 @@
         <a href="index.html#services" class="nav-link">Services</a>
         <a href="pricing.html" class="nav-link active">Pricing</a>
         <a href="index.html#contact" class="nav-link">Contact</a>
-        <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
+        <a class="phone phone-mobile" href="tel:+17252599927" aria-label="Call Riverside Carpet Cleaning at (725) 259-9927">(725) 259-9927</a>
         <a class="btn-primary pill cta-mobile" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
       </nav>
     </div>
@@ -281,6 +282,7 @@
           <input id="coupon" placeholder="Enter coupon (GREEN10)" />
           <button class="btn" id="applyCoupon">Apply</button>
         </div>
+        <p id="couponMsg" class="coupon-feedback" aria-live="polite"></p>
 
         <div class="totals">
           <div class="lineR"><span>Subtotal</span><strong id="sub">$0.00</strong></div>
@@ -390,7 +392,7 @@ function qtyStepper(id){
   return `
     <div class="qty" data-for="${id}">
       <button type="button" class="qminus">−</button>
-      <input type="number" min="1" value="1" />
+      <input type="number" min="1" value="1" aria-label="Quantity for ${id}" />
       <button type="button" class="qplus">+</button>
     </div>
   `;
@@ -399,7 +401,7 @@ function qtyStepper(id){
 function card(product){
   return `
   <article class="card">
-    <div class="media">${product.img ? `<img src="${product.img}" alt="">` : ''}</div>
+    <div class="media">${product.img ? `<img src="${product.img}" alt="${product.name}">` : ''}</div>
     <div class="body">
       <div class="name">${product.name}</div>
       <div class="desc">${product.desc}</div>
@@ -418,7 +420,7 @@ function listRow(product){
   // same content but compact (for list view)
   return `
   <article class="card" style="flex-direction:row;gap:12px">
-    <div class="media" style="width:220px;flex:0 0 220px">${product.img ? `<img src="${product.img}" alt="">` : ''}</div>
+    <div class="media" style="width:220px;flex:0 0 220px">${product.img ? `<img src="${product.img}" alt="${product.name}">` : ''}</div>
     <div class="body" style="flex:1">
       <div class="name" style="font-size:18px">${product.name}</div>
       <div class="desc">${product.desc}</div>
@@ -527,7 +529,7 @@ el('#applyCoupon').addEventListener('click', ()=>{
   const code = el('#coupon').value.trim().toUpperCase();
   state.coupon = (code==='GREEN10') ? 'GREEN10' : null;
   renderCart();
-  if(!state.coupon) alert('Invalid coupon. Try GREEN10.');
+  el('#couponMsg').textContent = state.coupon ? '' : 'Invalid coupon. Try GREEN10.';
 });
 
 el('#continue').addEventListener('click', ()=>{
