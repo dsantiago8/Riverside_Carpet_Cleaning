@@ -1,6 +1,5 @@
 :root{
     --snake:#4CAF50;       
-    --snake-dark:#27c90b;  /* darker green for borders/accents */
     --ink:#111;            /* dark text */
     --paper:#f5f5f5;       /* light gray bar */
     --white:#fff;
@@ -8,8 +7,7 @@
     --cardShadow: 0 8px 24px rgba(0,0,0,.12);
     --slate:#3e4449;
     --charcoal:#2e3438;     /* deep charcoal band */
-    --line:#e6e8ef;        /* subtle border color */
-    --muted:#6b7280;       /* muted/secondary text */
+
   }
   /* For the rest of the site text */
   body, p, li, a {
@@ -31,7 +29,7 @@
     position: sticky; top:0; z-index:50;
     background: rgba(255,255,255,.95);
     backdrop-filter: blur(6px);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--hair);
     box-shadow: 0 2px 18px rgba(0,0,0,.06);
   }
   .container{max-width:1200px;margin:0 auto;padding:0 24px;}
@@ -85,78 +83,20 @@
 
   /* Mobile */
   .nav-toggle{
-    display:none; width:40px; height:40px; border:1px solid var(--line);
+    display:none; width:40px; height:40px; border:1px solid var(--hair);
     background:#fff; border-radius:10px; align-items:center; justify-content:center; gap:4px;
   }
   .nav-toggle span{display:block; width:20px; height:2px; background:#111}
-  /* Base button (desktop hidden) */
-  .menu-pill{
-    appearance:none; border:1px solid var(--line);
-    background:#ffffff; color:#111; font-weight:700;
-    height:40px; padding:0 12px; border-radius:999px;
-    display:none; align-items:center; gap:8px; cursor:pointer;
-    box-shadow:0 2px 8px rgba(0,0,0,.06);
-  }
-  .menu-pill:focus-visible{ outline:2px solid var(--snake); outline-offset:2px; }
-
-  /* Icon: three bars */
-  .menu-icon,
-  .menu-icon::before,
-  .menu-icon::after{
-    content:""; display:block; width:18px; height:2px;
-    background:#111; border-radius:2px;
-  }
-  .menu-icon::before{ transform: translateY(-6px); }
-  .menu-icon::after{  transform: translateY( 4px); }
-
-  /* When menu is open, animate to X */
-  .menu-open .menu-icon{ background:transparent; }
-  .menu-open .menu-icon::before{ transform: rotate(45deg); }
-  .menu-open .menu-icon::after{  transform: rotate(-45deg); }
-
-  /* Mobile layout */
   @media (max-width:900px){
-    .nav-row{
-      grid-template-columns:auto 1fr auto;
-      height:72px;
-    }
-    .brand img{ width:44px; height:44px; }
-    .brand-title{ font-size:1.1rem; letter-spacing:.5px; }
-
-    html{ scroll-padding-top:72px; } /* anchor offset */
-
-    .menu-pill{ display:flex; }      /* show pill */
-    .nav-cta{ display:none; }        /* hide desktop CTAs on mobile */
-
-    /* Dropdown panel */
-    .nav{
-      position:absolute; left:0; right:0; top:72px;
-      background:#fff; border-bottom:1px solid var(--line);
-      display:none; flex-direction:column; padding:6px 0;
-      box-shadow:0 10px 24px rgba(0,0,0,.08);
-    }
-    .nav.open{ display:flex; }
-
-    /* Large tap targets */
-    .nav-link{
-      padding:14px 24px; font-size:1.05rem;
-      border-bottom:1px solid rgba(0,0,0,.05);
-    }
-    .nav-link:last-of-type{ border-bottom:none; }
-    .nav-link::after{ content:none; } /* remove desktop underline */
-
-    /* Mobile-only items inside menu */
-    .phone-mobile{
-      display:block; margin:8px 24px; padding:10px 12px;
-      background:#ecfdf5; color:#0b5e49; text-decoration:none; font-weight:800;
-      border-radius:8px; text-align:center;
-    }
-    .cta-mobile{
-      display:block; margin:6px 24px 14px; text-align:center;
-      box-shadow:0 6px 18px rgba(57,255,20,.25);
-    }
+    .nav-row{grid-template-columns:auto auto auto}
+    .nav{position:absolute; left:0; right:0; top:64px; background:#fff;
+        border-bottom:1px solid var(--hair); display:none; flex-direction:column;
+        padding:10px 24px}
+    .nav.open{display:flex}
+    .nav-toggle{display:flex}
+    .nav-cta{gap:8px}
+    .phone{display:none}          /* hide phone chip on smaller screens */
   }
-
   
   /* Hero */
   .hero{background:var(--snake);color:var(--white);padding:32px 0}
@@ -168,7 +108,7 @@
   }
   .copy h1{font-family: 'Anton', sans-serif;font-size:40px;line-height:1.1;margin-bottom:10px;font-weight:800}
   .copy h1 span{opacity:.8}
-  .copy p{max-width:46ch;margin-bottom:16px;opacity: 1}
+  .copy p{max-width:46ch;margin-bottom:16px;opacity:.95}
   .btn{
     display:inline-block;padding:10px 18px;border-radius:6px;
     background:#000;color:#fff;text-decoration:none;font-weight:700
@@ -187,195 +127,95 @@
     .media{order:-1}        /* image above text on small screens */
     .copy h1{font-size:32px}
   }
-  #cycling-text {
-    display: inline-block;
-    font-weight: 900;
-    color: #ffffff; /* your snake green highlight */
-    transition: opacity 0.6s ease-in-out;
-  }
-  .fade-out {
-    opacity: 0;
-  }
   
-  /* Services section */
+/* Services section */
   .services{
-    background:#3e4449;          
-    padding:48px 0 64px;
-    color:var(--white);
-  }
-  .services-title{
-    font-family: 'Anton', sans-serif;
-    font-size:28px;
-    font-weight:800;
-    text-align:center;
-    margin-bottom:28px;
-  }
-  
-  /* Grid */
-  .service-grid{
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap:24px;
-    align-items: stretch;
-  }
-  @media (max-width:1024px){
-    .service-grid{ grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width:700px){
-    .service-grid{ grid-template-columns: 1fr; }
-  }
-  
-  /* Card */
- /* keep structural bits that all cards share, if any */
-  .card{
-    display:flex;
-    flex-direction:column;
-    gap:14px;
-    height: var(--card-h, auto);
-  }
-
-  /* put the visual frame on normal cards only */
-  .card:not(.flip-card){
-    background:var(--white);
-    color:var(--ink);
-    border:3px solid var(--cardBorder);
-    border-radius:10px;
-    box-shadow:var(--cardShadow);
-    padding:28px 24px 22px;
-  }
-
-  /* hover effect only on non-flip cards (optional) */
-  .card:hover{
-    transform: translateY(-2px);
-    box-shadow:0 12px 28px rgba(0,0,0,.16);
-  }
-
-  /* Icon */
-  .card-icon{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:180px;
-  }
-  .card-icon svg{
-    width:160px; height:160px;
-    stroke:var(--cardBorder);
-    stroke-width: 2;
-    fill: none;
-  }
-  
-  /* Text */
-  .card h3{
-    text-align:center;
-    font-size:20px;
-    font-weight:800;
-  }
-  .card p{
-    color:#4a4a4a;
-    line-height:1.55;
-    min-height:72px;   /* keeps buttons aligned */
-  }
-
-  /* 3D flip container */
-  .flip-card{
-    perspective: 1200px;           /* gives depth to the flip */
-    background: transparent;       /* card background handled by faces */
-    height: var(--card-h, auto);
-  }
-
-  /* keep your existing .card styles, but move visuals to faces */
-  .flip-card .card-inner{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform .6s cubic-bezier(.2,.6,.2,1);
-  }
-
-  /* when flipped */
-  .flip-card.flipped .card-inner{
-    transform: rotateY(180deg);
-  }
-
-  /* faces */
-  .card-face{
-    position: absolute;
-    inset: 0;
-    backface-visibility: hidden;           /* hide face when turned */
-    background: var(--white);
-    color: var(--ink);
-    border: 3px solid var(--cardBorder);
-    border-radius: 10px;
-    box-shadow: var(--cardShadow);
-    padding: 28px 24px 22px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    height:100%;
-  }
-
-  /* front keeps your icon layout */
-  .card-front .card-icon{
-    display:flex; justify-content:center; align-items:center; height: 180px;
-  }
-  .card-front .card-icon svg{
-    width: 140px; height: 140px; stroke: var(--cardBorder);
-  }
-
-  /* back face */
-  .card-back{
-    transform: rotateY(180deg);
-    overflow: auto;
-    padding-bottom: 60px;
-  }
-  .card-back h4{ margin: 6px 0 2px; font-weight: 800; color: #111; }
-  .card-back ul{ margin: 0 0 6px 18px; }
-  .card-back .back-actions{
-    margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap;
-  }
-
-  /* Keep actions always visible at the bottom while scrolling the back */
-  .back-actions{
-    position: sticky;
-    bottom: 0;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,1) 40%);
-    padding-top: 12px;
-    margin-top: auto;              /* pushes it to the bottom of the flex column */
-  }
-  .btn.outline{
-    background: transparent;
-    color: #111;
-    border: 2px solid var(--snake);
-    border-radius: 9px;
-    padding: 12px 16px;
-  }
-
-  /* Ensure all flip cards are same height (use your existing grid card height) */
-  .flip-card{ height: var(--card-h, auto); }
-  .flip-card .card-face{ min-height: 420px; }
-
+      background:#3e4449;          
+      padding:48px 0 64px;
+      color:var(--white);
+    }
+    .services-title{
+      font-family: 'Anton', sans-serif;
+      font-size:28px;
+      font-weight:800;
+      text-align:center;
+      margin-bottom:28px;
+    }
     
-  /* Button */
-  .btn{
-    display:block;
-    text-align:center;
-    font-weight:800;
-    text-decoration:none;
-    border-radius:9px;
-    padding:12px 16px;
-    border:2px solid var(--snake);
-    transition:.2s ease;
-  }
-  .btn-solid{
-    background:var(--snake);
-    color:#000;
-  }
-  .btn-solid:hover{
-    filter:brightness(0.85);
-  }
+    /* Grid */
+    .service-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:24px;
+    }
+    @media (max-width:1024px){
+      .service-grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width:700px){
+      .service-grid{ grid-template-columns: 1fr; }
+    }
+    
+    /* Card */
+    .card{
+      background:var(--white);
+      color:var(--ink);
+      border:3px solid var(--cardBorder);
+      border-radius:10px;
+      box-shadow:var(--cardShadow);
+      padding:28px 24px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      box-shadow:0 12px 28px rgba(0,0,0,1.1);
+    }
+    
+    /* Icon */
+    .card-icon{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:140px;
+    }
+    .card-icon svg{
+      width:110px; height:110px;
+      stroke:var(--cardBorder);
+    }
+    
+    /* Text */
+    .card h3{
+      text-align:center;
+      font-size:20px;
+      font-weight:800;
+    }
+    .card p{
+      color:#4a4a4a;
+      line-height:1.55;
+      min-height:72px;   /* keeps buttons aligned */
+    }
+    
+    /* Button */
+    .btn{
+      display:block;
+      text-align:center;
+      font-weight:800;
+      text-decoration:none;
+      border-radius:9px;
+      padding:12px 16px;
+      border:2px solid var(--snake);
+      transition:.2s ease;
+    }
+    .btn-solid{
+      background:var(--snake);
+      color:#000;
+    }
+    .btn-solid:hover{
+      filter:brightness(0.85);
+    }
 
-  /* Bottom band layout */
+    /* Bottom band layout */
   .bottom-band{
     background:var(--slate);
     padding:28px 0 36px;
@@ -431,7 +271,7 @@
 
   @keyframes ba-scroll{
     from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }  
+    to   { transform: translateX(-50%); }  /* because we duplicated tiles */
   }
 
   /* Tiles */
@@ -474,6 +314,34 @@
     .ba-tile{ width:240px; height:160px; }
   }
 
+  /* Left card */
+  .biz-card{
+    background:#ffffff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px;
+  }
+  .biz-logo{
+    width:120px;height:120px;object-fit:contain;border-radius:10px;
+    display:block;margin-bottom:10px;
+  }
+  .biz-card h3{margin:0 0 10px;font-family: 'Anton', sans-serif;font-size:22px}
+  .biz-block{margin:14px 0 18px}
+  .biz-block strong{display:block;margin-bottom:6px}
+
+  .btn{
+    display:inline-block;
+    font-weight:900;text-decoration:none;text-align:center;
+    padding:12px 16px;border-radius:10px;border:2px solid var(--snake);
+  }
+  .btn-primary{background:var(--snake);color:#000;border-color:var(--snake-dark)}
+  .btn-primary:hover{filter:brightness(.95)}
+  .pill{border-radius:999px}
+
+  .biz-contact{margin-top:25px}
+  .biz-contact .row{display:flex;align-items:center;justify-content:flex-start;margin:2px 0}
+  .biz-contact a{color:#0b5e49;text-decoration:none;font-weight:700;margin-top: 0px;}
+
   /* Map */
   .map-embed iframe{border-radius:12px;border:1px solid var(--line);background:#ddd}
 
@@ -486,130 +354,7 @@
     padding:16px 18px;
     box-shadow:0 4px 16px rgba(0,0,0,.08);
   }
-  .about-pill h4{margin:0 0 6px;color: var(--snake); }
+  .about-pill h4{margin:0 0 6px;color: var(--snake); /* accent similar to screenshot titles */ }
   .about-pill p{margin:0;color:#374151}
-  .about-pill ul{margin:6px 0 0 18px;color:#ffffff}
-  .about-pill li{margin:6px 0;color:#fff}
-
-
-  /* Frosted glass business card in the bottom band */
-  .bottom-band .biz-card{
-    /* Frosted look */
-    background: rgba(255,255,255,0.10);   /* translucent so backdrop-filter shows */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.20);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-
-    /* Shape & spacing */
-    border-radius: 16px;
-    padding: 20px;
-    color: #f7f9fb;
-  }
-
-  /* Typography inside the card */
-  .bottom-band .biz-card h3{
-    font-family: 'Anton', sans-serif;
-    font-size: 22px;
-    color: #ffffff;
-    margin: 0 0 10px;
-  }
-  .bottom-band .biz-card .biz-block strong{ color:#ffffff; }
-  .bottom-band .biz-card p{ color:#e5e7eb; }
-
-  /* Logo sizing */
-  .bottom-band .biz-card .biz-logo{
-    width: 110px; height: 110px; object-fit: contain;
-    border-radius: 10px; display:block; margin-bottom:10px;
-  }
-
-  /* CTA button on frosted surface */
-  .bottom-band .biz-card .btn.btn-primary{
-    background: var(--snake);
-    border: 2px solid var(--snake-dark);
-    color: #000;
-    border-radius: 999px;
-    padding: 12px 16px;
-    box-shadow: 0 6px 18px rgba(57,255,20,.35);
-  }
-  .bottom-band .biz-card .btn.btn-primary:hover{
-    filter: brightness(.95);
-  }
-
-  /* Contact rows */
-  .bottom-band .biz-card .biz-contact{ margin-top: 20px; }
-  .bottom-band .biz-card .biz-contact .row{
-    display:flex; align-items:center; gap:8px; margin:4px 0;
-  }
-  .bottom-band .biz-card .biz-contact .row span{ color:#ffffff; }      /* emoji/icon */
-  .bottom-band .biz-card .biz-contact a{
-    color:#c8ffd0; text-decoration: underline; font-weight:700;
-  }
-
-  /* Frosted glass style for the About stack (right column) */
-  .bottom-band .about-pill{
-    background: rgba(255,255,255,0.10);   /* translucent for frost */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.20);
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-
-    border-radius: 16px;
-    padding: 16px 18px;
-    color: #f7f9fb;
-  }
-
-  /* Headings and text colors for contrast on the dark band */
-  .bottom-band .about-pill h4{
-    font-family: 'Anton', sans-serif;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: #ffffff;
-    margin: 0 0 6px;
-  }
-  .bottom-band .about-pill p{ color:#e5e7eb; margin:0; }
-
-  /* List styling (readable bullets + spacing) */
-  .bottom-band .about-pill ul{
-    margin: 6px 0 0 18px;
-    padding: 0;
-    color: #e5e7eb;
-  }
-  .bottom-band .about-pill li{
-    margin: 6px 0;
-  }
-
-  /*  subtle snake-green accent line under each title */
-  .bottom-band .about-pill h4::after{
-    content:"";
-    display:block;
-    width:48px; height:3px;
-    background: rgba(57,255,20,.8);  /* snake green */
-    border-radius: 999px;
-    margin-top: 6px;
-  }
-  /* Add spacing below the Business Hours block */
-  .biz-block {
-    margin: 14px 0 24px; /* Top, Right/Left, Bottom */
-  }
-
-  .biz-card .btn {
-    margin-top: 12px;
-  }
-
-  /* Pricing preview strip (below Services) */
-  .pricing-preview-strip {
-    background: var(--charcoal);
-    border-top: 3px solid rgba(76,175,80,.4);
-    border-bottom: 3px solid rgba(76,175,80,.4);
-    padding: 16px 0;
-    text-align: center;
-    color: #f3f4f6;
-  }
-  .pricing-preview-inner p { margin: 0; line-height: 1.6; }
-  .pricing-preview-inner strong { color: var(--snake); font-size: 1.1rem; }
-  .pricing-preview-inner a {
-    color: var(--snake); font-weight: 700; text-decoration: underline;
-  }
-  .pricing-preview-min { font-size: .9rem; color: #9ca3af; }
-
+  .about-pill ul{margin:6px 0 0 18px;color:#374151}
+  .about-pill li{margin:6px 0}

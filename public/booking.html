@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png?v=2">
 
 <title>Book Your Service | Riverside Carpet Cleaning</title>
 <style>
@@ -102,132 +101,79 @@
   .lineR{display:flex;justify-content:space-between}
   .grand{font-size:18px;font-weight:900}
 
-  /* Header (desktop) */
+  /* Header */
   .site-header{
     position: sticky; top:0; z-index:50;
     background: rgba(255,255,255,.95);
     backdrop-filter: blur(6px);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--hair);
     box-shadow: 0 2px 18px rgba(0,0,0,.06);
   }
   .container{max-width:1200px;margin:0 auto;padding:0 24px;}
   .nav-row{
     display:grid; grid-template-columns:auto 1fr auto; align-items:center;
-    gap:16px; height:96px;
+    gap:16px; height:110px;
   }
 
-  /* anchor offset for sticky header */
-  html{ scroll-behavior:smooth; scroll-padding-top:96px; }
+  html {
+    scroll-behavior: smooth;      /* smooth anchor scrolling */
+    scroll-padding-top: 72px;     /* match your header height */
+  }
 
   /* Brand */
-  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .brand img{ width:72px; height:72px; object-fit:contain; border-radius:8px; }
-  .brand-title{
-    font-family:'Anton', sans-serif; text-transform:uppercase;
-    font-weight:400; letter-spacing:1px; font-size:1.6rem; color:#1f2937;
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand img{width:115px; height:115px; object-fit:contain; border-radius:8px}
+  .brand-title {
+    font-family: 'Anton', sans-serif;
+    font-weight: normal; /* Anton has only one weight; this is fine */
+    font-size: 1.8rem;   /* Adjust size as needed */
+    letter-spacing: 1px; /* Optional—helpful for condensed fonts */
+    text-transform: uppercase;
   }
-
-  /* Inline nav (desktop) */
-  .nav{ display:flex; gap:20px; justify-content:center; }
+  
+  /* Nav */
+  .nav{display:flex; gap:20px; justify-content:center}
   .nav-link{
-    position:relative; text-decoration:none; color:#1f2937; font-weight:600; padding:6px 2px;
+    position:relative; text-decoration:none; color:#1f2937; font-weight:600;
+    padding:6px 2px;
   }
-  .nav-link:hover{ color:#0b5e49; }
+  .nav-link:hover{color:#0b5e49}
   .nav-link.active::after,
   .nav-link:hover::after{
     content:""; position:absolute; left:0; right:0; bottom:-10px; height:3px;
     background:var(--snake); border-radius:999px;
   }
 
-  /* Right actions (desktop) */
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  /* Right side */
+  .nav-cta{display:flex; align-items:center; gap:14px}
   .phone{
     color:#0b5e49; text-decoration:none; font-weight:800;
-    padding:6px 10px; border-radius:8px; background:#ecfdf5;
+    padding:6px 10px; border-radius:8px; background:#ecfdf5; /* soft green chip */
   }
   .btn-primary{
     display:inline-block; font-weight:900; text-decoration:none; color:#000;
     background:var(--snake); border:2px solid var(--snake-dark);
     padding:10px 14px; border-radius:10px; box-shadow:0 6px 18px rgba(57,255,20,.25);
   }
-  .btn-primary:hover{ filter:brightness(.95); }
-  .pill{ border-radius:999px; }
+  .btn-primary:hover{filter:brightness(.95)}
+  .pill{border-radius:999px}
 
-  /* Menu pill (mobile trigger) */
-  .menu-pill{
-    appearance:none; border:1px solid var(--line);
-    background:#fff; color:#111; font-weight:700;
-    height:40px; padding:0 12px; border-radius:999px;
-    display:none; align-items:center; gap:8px; cursor:pointer;
-    box-shadow:0 2px 8px rgba(0,0,0,.06);
+  /* Mobile */
+  .nav-toggle{
+    display:none; width:40px; height:40px; border:1px solid var(--hair);
+    background:#fff; border-radius:10px; align-items:center; justify-content:center; gap:4px;
   }
-  .menu-pill:focus-visible{ outline:2px solid var(--snake); outline-offset:2px; }
-  .menu-icon, .menu-icon::before, .menu-icon::after{
-    content:""; display:block; width:18px; height:2px; background:#111; border-radius:2px;
+  .nav-toggle span{display:block; width:20px; height:2px; background:#111}
+  @media (max-width:900px){
+    .nav-row{grid-template-columns:auto auto auto}
+    .nav{position:absolute; left:0; right:0; top:64px; background:#fff;
+        border-bottom:1px solid var(--hair); display:none; flex-direction:column;
+        padding:10px 24px}
+    .nav.open{display:flex}
+    .nav-toggle{display:flex}
+    .nav-cta{gap:8px}
+    .phone{display:none}          /* hide phone chip on smaller screens */
   }
-  .menu-icon::before{ transform: translateY(-6px); }
-  .menu-icon::after{  transform: translateY( 4px); }
-
-  /* animate to X when open */
-  .menu-open .menu-icon{ background:transparent; }
-  .menu-open .menu-icon::before{ transform: rotate(45deg); }
-  .menu-open .menu-icon::after{  transform: rotate(-45deg); }
-
-/* Mobile layout */
-@media (max-width:900px){
-  .nav-row{ grid-template-columns:auto 1fr auto; height:72px; }
-  .brand img{ width:44px; height:44px; }
-  .brand-title{ font-size:1.1rem; letter-spacing:.5px; }
-
-  html{ scroll-padding-top:72px; }
-
-  .menu-pill{ display:flex; }
-  .nav-cta{ display:none; } /* we move actions into the dropdown */
-
-  /* Dropdown panel */
-  .nav{
-    position:absolute; left:0; right:0; top:72px;
-    background:#fff; border-bottom:1px solid var(--line);
-    display:none; flex-direction:column; padding:6px 0;
-    box-shadow:0 10px 24px rgba(0,0,0,.08);
-  }
-  .nav.open{ display:flex; }
-
-  .nav-link{
-    padding:14px 24px; font-size:1.05rem;
-    border-bottom:1px solid rgba(0,0,0,.05);
-  }
-  .nav-link:last-of-type{ border-bottom:none; }
-  .nav-link::after{ content:none; } /* remove desktop underline */
-
-  .phone-mobile{
-    display:block; margin:8px 24px; padding:10px 12px;
-    background:#ecfdf5; color:#0b5e49; text-decoration:none; font-weight:800;
-    border-radius:8px; text-align:center;
-  }
-  .cta-mobile{
-    display:block; margin:6px 24px 14px; text-align:center;
-    box-shadow:0 6px 18px rgba(57,255,20,.25);
-  }
-}
-  /* Section dividers in catalog */
-  .catalog-section-header {
-    grid-column: 1 / -1;
-    padding: 12px 0 4px;
-    border-bottom: 2px solid var(--snake);
-    margin-bottom: 4px;
-  }
-  .catalog-section-header h2 {
-    font-size: 18px;
-    font-weight: 800;
-    color: #1f2937;
-  }
-  .catalog-section-header p {
-    font-size: 13px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
 </style>
 </head>
 <body>
@@ -240,26 +186,25 @@
         <span class="brand-title">Riverside Carpet Cleaning</span>
       </a>
   
-      <!-- Menu pill (mobile) -->
-      <button class="menu-pill" aria-label="Open menu" aria-expanded="false">
-        <span class="menu-icon"></span>
-        <span class="menu-text">Menu</span>
+      <!-- Mobile toggle -->
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
   
       <!-- Nav -->
       <nav class="nav">
-        <a href="index.html#hero" class="nav-link">Home</a>
+        <a href="index.html#hero" class="nav-link active">Home</a>
         <a href="index.html#services" class="nav-link">Services</a>
-        <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="index.html#contact" class="nav-link">Contact</a>
-        <div class="nav-cta"></div>
-          <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
-          
-        </div>
       </nav>
+  
+      <!-- Right: phone + CTA -->
+      <div class="nav-cta">
+        <a class="phone" href="tel:+17023571313"> (702) 333-3333</a>
+        <a class="btn-primary pill" href="booking.html">Book Now</a>
+      </div>
     </div>
   </header>
-  
   <div class="page">
     <h1 class="title">Book your service</h1>
 
@@ -316,90 +261,43 @@
 
 <script>
 /* ------- Data (replace images/prices as you like) ------- */
-const CARPET_PRODUCTS = [
+const PRODUCTS = [
   {
     id:'std-room',
     name:'Standard size room up to 144 sq ft',
     desc:'Any bedroom, dining room, living room…',
-    price:55,
+    price:40,
     img:'images/standard_room_size.jpg'
   },
   {
     id:'med-room',
     name:'Medium room up to 288 sq ft',
     desc:'Any room or area up to 288 sq ft.',
-    price:75,
+    price:68,
     img:'images/medium_room.jpg'
   },
   {
     id:'large-room',
     name:'Large room up to 432 sq ft',
     desc:'Any room or double area up to 432  sq ft.',
-    price:95,
+    price:92,
     img:'images/large_room.jpg'
-  },
-  {
-    id:'hall',
-    name:'Small Hallway up to 56 sq ft',
-    desc:'Hall/landing area. Great add-on.',
-    price:25,
-    img:'images/hall.jpg'
   },
   {
     id:'stairs',
     name:'Stair Flights',
     desc:'Single staircase (up to 14 steps).',
-    price:35,
+    price:30,
     img:'images/stairs.jpg'
+  },
+  {
+    id:'hall',
+    name:'Small Hallway up to 56 sq ft',
+    desc:'Hall/landing area. Great add-on.',
+    price:15,
+    img:'images/hall.jpg'
   }
 ];
-
-const UPHOLSTERY_PRODUCTS = [
-  {
-    id:'loveseat',
-    name:'Loveseat',
-    desc:'2 seat',
-    price:85,
-    img:'images/loveseat.jpg'
-  },
-  {
-    id:'3-seater',
-    name:'Sofa 3 Seater',
-    desc:'3 seater sofa',
-    price:135,
-    img:'images/3-seater.jpg'
-  },
-  {
-    id:'4-seater',
-    name:'Sectional Sofa 4 Seater',
-    desc:'4 seat couch',
-    price:185,
-    img:'images/4-seater.jpg'
-  },
-  {
-    id:'5-seater',
-    name:'Sectional Sofa 5 Seater',
-    desc:'5 seat couch',
-    price:240,
-    img:'images/5-seater.jpg'
-  },
-  {
-    id:'l-shape',
-    name:'L-shape Seater',
-    desc:'6 seater L-shape or similar in size',
-    price:300,
-    img:'images/l-shape.jpg'
-  },
-  {
-    id:'recliner',
-    name:'Recliner Chair',
-    desc:'Recliners and one seaters',
-    price:50,
-    img:'images/recliner.jpg'
-  }
-];
-
-const PRODUCTS = [...CARPET_PRODUCTS, ...UPHOLSTERY_PRODUCTS];
 
 const state = {
   view:'grid',
@@ -461,41 +359,11 @@ function listRow(product){
 function renderCatalog(){
   const wrap = el('#catalog');
   wrap.className = state.view === 'grid' ? 'grid' : 'list';
-
-  function filterProducts(list) {
-    return list.filter(p =>
-      p.name.toLowerCase().includes(state.filter) ||
-      p.desc.toLowerCase().includes(state.filter)
-    );
-  }
-
-  const carpetItems    = filterProducts(CARPET_PRODUCTS);
-  const upholsteryItems = filterProducts(UPHOLSTERY_PRODUCTS);
-  const renderFn = state.view === 'grid' ? card : listRow;
-
-  let html = '';
-
-  if (carpetItems.length) {
-    html += `<div class="catalog-section-header">
-      <h2>🧹 Carpet Cleaning</h2>
-      <p>Hot water extraction — fast dry, kid &amp; pet safe</p>
-    </div>`;
-    html += carpetItems.map(renderFn).join('');
-  }
-
-  if (upholsteryItems.length) {
-    html += `<div class="catalog-section-header">
-      <h2>🛋️ Upholstery Cleaning</h2>
-      <p>Sofas, loveseats, sectionals &amp; recliners</p>
-    </div>`;
-    html += upholsteryItems.map(renderFn).join('');
-  }
-
-  if (!carpetItems.length && !upholsteryItems.length) {
-    html = `<p style="color:var(--muted);padding:16px 0">No services match your search.</p>`;
-  }
-
-  wrap.innerHTML = html;
+  const items = PRODUCTS.filter(p =>
+    p.name.toLowerCase().includes(state.filter) ||
+    p.desc.toLowerCase().includes(state.filter)
+  );
+  wrap.innerHTML = items.map(p => state.view==='grid'?card(p):listRow(p)).join('');
 }
 
 /* ------- Cart ------- */
@@ -594,26 +462,5 @@ el('#continue').addEventListener('click', ()=>{
 renderCatalog();
 renderCart();
 </script>
-
-<script>
-  const menuBtn = document.querySelector('.menu-pill');
-  const nav = document.querySelector('.nav');
-
-  menuBtn?.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    menuBtn.classList.toggle('menu-open', isOpen);
-    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-
-  // Close the menu after tapping a link
-  document.querySelectorAll('.nav a').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      menuBtn.classList.remove('menu-open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-</script>
-
 </body>
 </html>
