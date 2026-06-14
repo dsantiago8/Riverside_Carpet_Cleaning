@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Preconnect to critical third-party origins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <!-- (optional fallbacks) -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+
+  <meta name="description"
+      content="Riverside Carpet Cleaning in Las Vegas — eco-friendly carpet, tile & grout, and upholstery cleaning. Fast online booking and a satisfaction guarantee." />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png?v=2">
   <title>Riverside Carpet Cleaning</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
   <link rel="stylesheet" href="style/styles.css" />
+  <link rel="preload" as="image"
+    href="/images/hero-960.webp"
+    imagesrcset="/images/hero-640.webp 640w,
+                /images/hero-960.webp 960w,
+                /images/hero-1280.webp 1280w"
+    imagesizes="(min-width: 1280px) 1280px, 100vw">
 </head>
 <body>
   <!-- Top bar -->
@@ -18,37 +37,67 @@
         <span class="brand-title">Riverside Carpet Cleaning</span>
       </a>
   
-      <!-- Mobile toggle -->
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <!-- Menu pill (NEW) -->
+      <button class="menu-pill" aria-label="Open menu" aria-expanded="false">
+        <span class="menu-icon"></span>
+        <span class="menu-text">Menu</span>
       </button>
   
-      <!-- Nav -->
+      <!-- Nav (dropdown on mobile) -->
       <nav class="nav">
         <a href="index.html#hero" class="nav-link active">Home</a>
         <a href="index.html#services" class="nav-link">Services</a>
         <a href="index.html#contact" class="nav-link">Contact</a>
+        <div class="nav-cta"></div>
+          <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
+          <a class="btn-primary pill cta-mobile" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+        </div>
       </nav>
   
-      <!-- Right: phone + CTA -->
+      <!-- Right: phone + CTA (desktop only)
       <div class="nav-cta">
-        <a class="phone" href="tel:+17023571313"> (702) 333-3333</a>
-        <a class="btn-primary pill" href="booking.html">Book Now</a>
-      </div>
+        <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
+        <a class="btn-primary pill cta-mobile" href="booking.html">Book Now</a>
+      </div> -->
     </div>
   </header>
+  
 
   <!-- Hero section -->
   <section id="hero" class="hero">
     <div class="container hero-inner">
       <div class="copy">
-        <h1>The Best <span>COM</span> Cleaning</h1>
-        <p>From eco-friendly on-time service to spotless results — guaranteed.</p>
-        <a class="btn" href="booking.html">Book Now</a>
+        <h1>The Best <span id="cycling-text"> Carpet</span> Cleaning</h1>
+        <p>The Best Carpet Cleaning in Las Vegas, backed by Our Guarantee!</p>
+        <p>
+
+          That’s not just talk—we prove it every day. From punctual, friendly service to eco-friendly solutions that actually work, Riverside Carpet Cleaning goes beyond surface clean. Whether it’s carpets, tile, grout, upholstery, or hardwood, we bring new life to your home and business.  
+        </p>
+        <p>
+          Our cleaning methods are tough on dirt but safe for kids, pets, and the planet—because a clean space should never come at the cost of health.
+        </p>
+        <p>Scheduling is fast, easy, and secure.
+        </p>
+        <a class="btn" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
       </div>
       <div class="media">
-        <!-- Replace with your image -->
-        <img src="images/hero-cleaning.jpg" alt="Clean carpet and couch">
+        <picture>
+          <source
+            type="image/webp"
+            srcset="images/hero-640.webp 640w,
+                    images/hero-960.webp 960w,
+                    images/hero-1280.webp 1280w"
+            fetchpriority="high"
+            sizes="100vw">
+      
+          <!-- Fallback (older browsers) -->
+          <img
+            src="images/hero-cleaning.jpg"
+            width="960" height="540"        
+            alt="Clean carpet and couch"
+            fetchpriority="high"
+            decoding="async">
+        </picture>
       </div>
     </div>
   </section>
@@ -59,43 +108,151 @@
   
       <div class="service-grid">
         <!-- Service 1 -->
-        <article class="card">
-          <div class="card-icon">
-            <!-- placeholder icon -->
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="8" cy="18" r="3" fill="none" stroke-width="2"/>
-              <path d="M8 15V6h6l2 3h4v6" fill="none" stroke-width="2"/>
-              <circle cx="18" cy="18" r="3" fill="none" stroke-width="2"/>
-            </svg>
+        <article class="card flip-card">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true" fill="none" stroke="currentColor"
+                  stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                
+                  <!-- Floor head (squeegee) -->
+                  <path d="M20 58 h18 a3 3 0 0 0 3-3 v-7 H28 l-9 3 a4 4 0 0 0-3 4 v1 h6" />
+                  <!-- Little front roller -->
+                  <circle cx="19" cy="60" r="2.6" />
+                
+                  <!-- Machine body (tall canister) -->
+                  <path d="M39 31
+                            c7-6 15-6 20-2
+                            v24
+                            a4 4 0 0 1-4 4
+                            H41
+                            a4 4 0 0 1-4-4
+                            v-12
+                            c0-4 1-8 6-10z" />
+                
+                  <!-- Big rear wheel -->
+                  <circle cx="54" cy="56" r="7.5" />
+                  <circle cx="54" cy="56" r="3.6" />
+                
+                  <!-- Hose sweeping from wand into the body -->
+                  <path d="M40 37
+                            c8-2 12 2 12 8" />
+                
+                  <!-- Upright frame behind body (subtle) -->
+                  <path d="M52 14 v26" />
+                  <path d="M48 14 h4 a2 2 0 0 1 2 2 v4" />
+                </svg>
+          
+              </div>
+              <h3>Carpet Cleaning</h3>
+              <p>Reliable, on-time service for homes, offices, and storefronts using eco-friendly solutions and fast-dry methods.</p>
+              <a class="btn btn-solid flip-btn" data-action="flip" href="#">LEARN MORE</a>
+            </div>
+            
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h4>What’s Included</h4>
+              <ul>
+                <li>Pre-inspection & spot treatment</li>
+                <li>Hot water extraction</li>
+                <li>Fast dry pass</li>
+                <li>Deodorize (optional)</li>
+              </ul>
+        
+              <h4>Great For</h4>
+              <p>Bedrooms, living rooms, offices, and hallways.</p>
+        
+              <div class="back-actions">
+                <a href="https://book.squareup.com/appointments/o064iqa1v35uvb/location/L6192KWCAZCE9/services" class="btn btn-solid">BOOK THIS SERVICE</a>
+                <button class="btn outline flip-btn" data-action="unflip">BACK</button>
+              </div>
+            </div>
           </div>
-          <h3>Commercial Carpet Cleaning</h3>
-          <p>Reliable, on-time service for offices and storefronts using eco-friendly solutions and fast-dry methods.</p>
-          <a class="btn btn-solid" href="#">LEARN MORE</a>
         </article>
   
         <!-- Service 2 -->
-        <article class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 10h18M6 6h12M4 14h8M4 18h6" fill="none" stroke-width="2"/>
-            </svg>
+        <article class="card flip-card">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <div class="card-icon">
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke="currentColor" fill="none" stroke-width="2">
+                  <!-- Sofa base -->
+                  <rect x="8" y="28" width="48" height="16" rx="3" ry="3" fill="none"/>
+                  <!-- Sofa back -->
+                  <rect x="12" y="16" width="40" height="12" rx="2" ry="2" fill="none"/>
+                  <!-- Sofa arms -->
+                  <rect x="4" y="26" width="8" height="12" rx="2" ry="2" fill="none"/>
+                  <rect x="52" y="26" width="8" height="12" rx="2" ry="2" fill="none"/>
+                  <!-- Legs -->
+                  <line x1="12" y1="44" x2="12" y2="50"/>
+                  <line x1="52" y1="44" x2="52" y2="50"/>
+                </svg>
+              </div>
+              <h3>Upholstery Cleaning</h3>
+              <p>Deep cleaning for sofas, chairs, and sectionals. Safe for kids, pets, and delicate fabrics.</p>
+              <a class="btn btn-solid flip-btn" data-action="flip" href="#">LEARN MORE</a>
+            </div>
+
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h4>What’s Included</h4>
+              <ul>
+                <!-- <li>Fabric ID &amp; colorfast test</li> -->
+                <li>Pre-vacuum &amp; targeted spot treatment</li>
+                <li>Hot-water extraction with upholstery tool</li>
+                <li>Deodorize &amp; pH balance</li>
+                <li>Speed-dry air movement (when possible)</li>
+              </ul>
+
+              <h4>Great For</h4>
+              <p>Sofas, love seats, chairs, sectionals, ottomans, and cushions.</p>
+
+              <h4>Add-Ons</h4>
+              <ul>
+                <li>Fabric protector</li>
+                <li>Pet enzyme treatment</li>
+                <li>Sanitizer</li>
+              </ul>
+
+              <div class="back-actions">
+                <a href="https://book.squareup.com/appointments/o064iqa1v35uvb/location/L6192KWCAZCE9/services" class="btn btn-solid">BOOK THIS SERVICE</a>
+                <button class="btn outline flip-btn" data-action="unflip">BACK</button>
+              </div>
+            </div>
           </div>
-          <h3>Upholstery Cleaning</h3>
-          <p>Deep cleaning for sofas, chairs, and sectionals—safe for kids, pets, and delicate fabrics.</p>
-          <a class="btn btn-solid" href="#">LEARN MORE</a>
         </article>
   
         <!-- Service 3 -->
         <article class="card">
           <div class="card-icon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4 8h16M4 12h16M4 16h16" fill="none" stroke-width="2"/>
-              <path d="M4 4h16v16H4z" fill="none" stroke-width="2"/>
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Outer tile area -->
+              <rect x="10" y="10" width="44" height="44" rx="3" ry="3"/>
+
+              <!-- Vertical grout lines -->
+              <line x1="21.5" y1="10" x2="21.5" y2="54"/>
+              <line x1="33"   y1="10" x2="33"   y2="54"/>
+              <line x1="44.5" y1="10" x2="44.5" y2="54"/>
+
+              <!-- Horizontal grout lines -->
+              <line x1="10" y1="21.5" x2="54" y2="21.5"/>
+              <line x1="10" y1="33"   x2="54" y2="33"/>
+              <line x1="10" y1="44.5" x2="54" y2="44.5"/>
+
+              <!-- Smudge -->
+              <line x1="49.5" y1="14"   x2="49.5" y2="20"/>
+              <line x1="46.5" y1="17"   x2="52.5" y2="17"/>
+              <line x1="47.7" y1="15.2" x2="51.3" y2="18.8"/>
+              <line x1="51.3" y1="15.2" x2="47.7" y2="18.8"/>
             </svg>
+
           </div>
           <h3>Tile & Grout Cleaning</h3>
           <p>Restore tile and grout to like-new with hot water extraction and optional sealant for long-lasting protection.</p>
-          <a class="btn btn-solid" href="#">LEARN MORE</a>
+          <a class="btn btn-solid flip-btn" data-action="flip" href="#">COMING SOON</a>
         </article>
       </div>
     </div>
@@ -108,66 +265,171 @@
 
       <div class="ba-scroller" aria-label="Before and after gallery">
         <div class="ba-track">
+
           <!-- Tile 1 -->
           <figure class="ba-tile">
-            <img src="images/before_1.PNG" alt="Room carpet before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_1-320.webp 320w, /images/before_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_1.PNG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_1.jpg" alt="Room carpet after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_1-320.webp 320w, /images/after_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_1.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
 
           <!-- Tile 2 -->
           <figure class="ba-tile">
-            <img src="images/before_2.JPEG" alt="Stairs before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_2-320.webp 320w, /images/before_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_2.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_2.jpg" alt="Stairs after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_2-320.webp 320w, /images/after_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_2.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
 
           <!-- Tile 3 -->
           <figure class="ba-tile">
-            <img src="images/before_3.JPEG" alt="Dirty Carpet Stairs">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_3-320.webp 320w, /images/before_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Dirty carpet stairs before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_3.JPEG" alt="Carpet after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_3-320.webp 320w, /images/after_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Carpet stairs after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
 
-          <!-- DUPLICATES for seamless loop (repeat the same tiles once) -->
+          <!-- DUPLICATES for seamless loop -->
           <figure class="ba-tile">
-            <img src="images/before_1.PNG" alt="Room carpet before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_1-320.webp 320w, /images/before_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_1.PNG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_1.jpg" alt="Room carpet after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_1-320.webp 320w, /images/after_1-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_1.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Room carpet after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
+
           <figure class="ba-tile">
-            <img src="images/before_2.JPEG" alt="Stairs before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_2-320.webp 320w, /images/before_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_2.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_2.jpg" alt="Stairs after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_2-320.webp 320w, /images/after_2-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_2.jpg"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Stairs after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
+
           <figure class="ba-tile">
-            <img src="images/before_3.JPEG" alt="Tile grout before cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/before_3-320.webp 320w, /images/before_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/before_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Tile grout before cleaning">
+            </picture>
             <figcaption>Before</figcaption>
           </figure>
+
           <figure class="ba-tile after">
-            <img src="images/after_3.JPEG" alt="Tile grout after cleaning">
+            <picture>
+              <source type="image/webp"
+                      srcset="/images/after_3-320.webp 320w, /images/after_3-640.webp 640w"
+                      sizes="(min-width: 768px) 320px, 90vw">
+              <img src="/images/after_3.JPEG"
+                  width="320" height="428"
+                  loading="lazy" decoding="async"
+                  alt="Tile grout after cleaning">
+            </picture>
             <figcaption>After</figcaption>
           </figure>
+
         </div>
       </div>
     </div>
   </section>
-
 
   <section id= "contact" class="bottom-band">
     <div class="container band-grid">
@@ -182,16 +444,16 @@
           <p>07:00 am to 06:00 pm</p>
         </div>
   
-        <a href="booking.html" class="btn btn-primary pill">BOOK WITH US</a>
+        <a href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start" class="btn btn-primary pill">BOOK WITH US</a>
   
         <div class="biz-contact">
           <div class="row">
-            <span>📞</span>
-            <a href="tel:+17023571313">(702) 333-3333</a>
+            
+            <a href="tel:+17252599927">(725) 259-9927</a>
           </div>
           <div class="row">
-            <span>✉️</span>
-            <a href="mailto:riversidecleaning@gmail.com">riversidecleaning@gmail.com</a>
+            
+            <a href="mailto:riversidecleansing@gmail.com">riversidecleansing@gmail.com</a>
           </div>
         </div>
       </aside>
@@ -219,7 +481,7 @@
           <h4>Why People Choose Us</h4>
           <ul>
             <li>On-time arrivals & clear pricing</li>
-            <li>Green solutions—kid & pet safe</li>
+            <li>Green solutions; kid & pet safe</li>
             <li>Dry times you can actually plan around</li>
             <li>100% satisfaction guarantee</li>
           </ul>
@@ -236,7 +498,7 @@
     </div>
   </section>
   
-  <script>
+  <!-- <script>
     const btn = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');
     btn?.addEventListener('click', () => {
@@ -251,6 +513,163 @@
         document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
       });
     });
+  </script> -->
+
+  <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous">
   </script>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-pill');
+    const nav = document.querySelector('.nav');
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      menuBtn.classList.toggle('menu-open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close menu after any link tap
+    document.querySelectorAll('.nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuBtn.classList.remove('menu-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+  <script>
+    const navLinks = [...document.querySelectorAll('.nav a.nav-link')];
+    const sectionIds = ['hero', 'services', 'contact'];     // make sure these IDs exist
+    const sections = sectionIds
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+  
+    function setActive(hash) {
+      navLinks.forEach(a => {
+        const href = a.getAttribute('href') || '';
+        const h = href.includes('#') ? href.slice(href.indexOf('#')) : '';
+        a.classList.toggle('active', h === hash);
+      });
+    }
+  
+    function updateActiveByViewport() {
+      const headerH = document.querySelector('.site-header')?.offsetHeight || 0;
+      // choose a point in the viewport *below* the sticky header
+      const probe = headerH + (window.innerHeight - headerH) / 2;
+  
+      let current = null;
+      let bestDist = Infinity;
+  
+      for (const sec of sections) {
+        const r = sec.getBoundingClientRect();   // viewport coords
+        // if the probe point is inside this section, pick it immediately
+        if (r.top <= probe && r.bottom >= probe) {
+          current = sec;
+          break;
+        }
+        // otherwise, pick the section whose center is closest to the probe
+        const center = (r.top + r.bottom) / 2;
+        const dist = Math.abs(center - probe);
+        if (dist < bestDist) {
+          bestDist = dist;
+          current = sec;
+        }
+      }
+  
+      if (current) setActive('#' + current.id);
+    }
+  
+    // click: set immediately (and close mobile menu if open)
+    document.querySelectorAll('.nav a').forEach(a => {
+      a.addEventListener('click', () => {
+        const href = a.getAttribute('href') || '';
+        const hash = href.includes('#') ? href.slice(href.indexOf('#')) : '';
+        if (hash) setActive(hash);
+        document.querySelector('.nav')?.classList.remove('open');
+        document.querySelector('.menu-pill')?.classList.remove('menu-open');
+      });
+    });
+  
+    // scroll & resize
+    window.addEventListener('scroll', updateActiveByViewport, { passive: true });
+    window.addEventListener('resize', updateActiveByViewport);
+  
+    // on load
+    if (location.hash) setActive(location.hash);
+    updateActiveByViewport();
+  </script>
+  
+  <script>
+    const words = ["Carpet", "Upholstery", "Tile & Grout"];
+    let i = 0;
+    const span = document.getElementById("cycling-text");
+  
+    setInterval(() => {
+      // fade out
+      span.classList.add("fade-out");
+  
+      setTimeout(() => {
+        // switch word after fade
+        i = (i + 1) % words.length;
+        span.textContent = words[i];
+  
+        // fade back in
+        span.classList.remove("fade-out");
+      }, 600); // matches CSS transition
+    }, 1500); // change every 3s
+  </script>  
+  
+  <script>
+    // Delegate clicks for all flip buttons
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('.flip-btn');
+      if(!btn) return;
+  
+      e.preventDefault();
+      const card = btn.closest('.flip-card');
+  
+      if(btn.dataset.action === 'flip'){
+        card.classList.add('flipped');
+      }else{
+        card.classList.remove('flipped');
+      }
+    });
+  </script>
+  
+  <script>
+    function equalizeServiceCards() {
+      const cards = document.querySelectorAll('.service-grid .card');
+      let maxH = 0;
+  
+      // reset any inline heights before measuring
+      cards.forEach(card => {
+        const front = card.querySelector('.card-front') || card; // non-flip cards OK
+        front.style.height = 'auto';
+      });
+  
+      // find tallest front
+      cards.forEach(card => {
+        const front = card.querySelector('.card-front') || card;
+        const h = front.offsetHeight;
+        if (h > maxH) maxH = h;
+      });
+  
+      // set the CSS var used by .card / .flip-card
+      document.documentElement.style.setProperty('--card-h', maxH + 'px');
+    }
+  
+    // run on load (after fonts/images) and on resize
+    window.addEventListener('load', equalizeServiceCards);
+    let _eqTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(_eqTimer);
+      _eqTimer = setTimeout(equalizeServiceCards, 150);
+    });
+  </script>
+  
+
 </body>
 </html>
