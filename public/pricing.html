@@ -1,565 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png?v=2">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing – Riverside Carpet Cleaning</title>
+  <meta name="description" content="Clear, honest pricing for carpet cleaning, upholstery cleaning, stairs, and hallways in Las Vegas. No hidden fees." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<title>Pricing | Riverside Carpet Cleaning</title>
-<style>
-  :root{
-    --snake:#4CAF50;
-    --snake-dark:#27c90b;
-    --ink:#111;
-    --muted:#6b7280;
-    --paper:#f8f9fb;
-    --card:#fff;
-    --line:#e6e8ef;
-    --bg:#f2f4f7;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Segoe UI,system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:#eef1f4}
-  a{color:inherit}
-  .page{max-width:1200px;margin:20px auto;padding:0 20px}
-  .title{font-size:22px;margin:0 0 12px}
-  .notice{
-    background:#fff;border:1px solid var(--line);border-left:6px solid var(--snake);
-    padding:14px 16px;border-radius:8px;margin-bottom:16px;color:#1f2937
-  }
+    :root {
+      --blue: #1a6fb5;
+      --blue-dark: #145a94;
+      --blue-light: #e8f2fc;
+      --green: #2eaa6e;
+      --green-light: #e6f7f0;
+      --text: #1a1a2e;
+      --muted: #5a6370;
+      --border: #e2e8f0;
+      --white: #ffffff;
+      --bg: #f8fafc;
+    }
 
-  /* Layout */
-  .wrap{display:grid;grid-template-columns:1fr 320px;gap:20px}
-  @media (max-width:1000px){ .wrap{grid-template-columns:1fr} }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
 
-  /* Left column header row */
-  .toolbar{
-    display:flex;gap:10px;align-items:center;justify-content:space-between;margin:12px 0 16px
-  }
-  .search{
-    display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);
-    border-radius:8px;padding:8px 10px;min-width:260px
-  }
-  .search input{border:none;outline:none;width:100%;font-size:14px}
-  .view{display:flex;gap:8px}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;
-    padding:8px 12px;border-radius:8px;border:1px solid var(--line);background:#fff;
-    cursor:pointer;font-weight:600;font-size:14px
-  }
-  .btn:hover{border-color:#d3d7e0}
-  .btn-accent{background:var(--snake);border-color:var(--snake-dark);font-weight:800}
-  .btn-accent:hover{filter:brightness(.95)}
-  .pill{border-radius:999px}
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    .nav-logo img { height: 40px; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-phone {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.1s;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: var(--blue-dark); }
 
-  /* Grid/List */
-  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-  @media (max-width:1100px){ .grid{grid-template-columns:repeat(2,1fr)} }
-  @media (max-width:700px){ .grid{grid-template-columns:1fr} }
-  .list{display:grid;grid-template-columns:1fr;gap:12px}
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 64px 24px 56px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--blue);
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-block;
+      transition: transform 0.15s;
+    }
+    .btn-white:hover { transform: translateY(-2px); }
 
-  /* Product card */
-  .card{
-    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
-    display:flex;flex-direction:column
-  }
-  .media{aspect-ratio:4/3;background:#ddd;display:flex;align-items:center;justify-content:center}
-  .media img{width:100%;height:100%;object-fit:cover}
-  .body{padding:14px 14px 10px}
-  .name{font-weight:800;margin:2px 0 6px}
-  .desc{color:var(--muted);font-size:14px;line-height:1.45}
-  .priceRow{
-    display:flex;align-items:center;justify-content:space-between;margin-top:12px
-  }
-  .price{font-weight:800;color:#065f46}
-  .unit{font-weight:600;color:var(--muted);margin-left:6px}
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--green);
+      color: var(--white);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .trust-bar span::before { content: "✓  "; }
 
-  .controls{
-    display:flex;align-items:center;gap:6px;margin:10px 0 6px
-  }
-  .qty{
-    display:flex;align-items:center;border:1px solid var(--line);border-radius:8px;overflow:hidden
-  }
-  .qty button{width:32px;height:32px;border:none;background:#f8fafc;cursor:pointer;font-weight:800}
-  .qty input{width:44px;text-align:center;border:none;outline:none;height:32px}
-  .add{margin-left:auto}
+    /* ── SECTION ── */
+    section { padding: 56px 24px; }
+    section:nth-child(even) { background: var(--bg); }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-title { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .section-sub { color: var(--muted); margin-bottom: 32px; font-size: 0.98rem; }
 
-  /* Sidebar */
-  .side{
-    background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;position:sticky;top:12px;height:fit-content
-  }
-  .biz{display:flex;gap:12px;align-items:center;margin-bottom:12px}
-  .biz img{width:56px;height:56px;border-radius:6px;object-fit:cover;border:1px solid var(--line)}
-  .biz h3{margin:0;font-size:16px}
-  .muted{color:var(--muted);font-size:14px}
-  .cart{margin-top:8px;border-top:1px dashed var(--line);padding-top:10px}
-  .cart-item{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid #f1f3f6}
-  .cart-item small{color:var(--muted)}
-  .rm{background:none;border:none;color:#ef4444;cursor:pointer}
-  .coupon{display:flex;gap:8px;margin:12px 0}
-  .coupon input{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px}
-  .coupon-feedback{color:#b91c1c;font-size:13px;margin-top:-6px;margin-bottom:8px}
-  .totals{display:grid;gap:6px;margin:10px 0}
-  .lineR{display:flex;justify-content:space-between}
-  .grand{font-size:18px;font-weight:900}
+    /* ── PRICING TABLES ── */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    }
+    .price-table thead { background: var(--blue); color: var(--white); }
+    .price-table thead th {
+      padding: 14px 20px;
+      text-align: left;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .price-table tbody tr {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .price-table tbody tr:last-child { border-bottom: none; }
+    .price-table tbody tr:hover { background: var(--blue-light); }
+    .price-table td { padding: 14px 20px; font-size: 0.97rem; }
+    .price-table td:last-child {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+    .price-table .note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      display: block;
+      margin-top: 2px;
+      font-weight: 400;
+    }
 
-  /* Header (desktop) */
-  .site-header{
-    position: sticky; top:0; z-index:50;
-    background: rgba(255,255,255,.95);
-    backdrop-filter: blur(6px);
-    border-bottom:1px solid var(--line);
-    box-shadow: 0 2px 18px rgba(0,0,0,.06);
-  }
-  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
-  .nav-row{
-    display:grid; grid-template-columns:auto 1fr auto; align-items:center;
-    gap:16px; height:96px;
-  }
+    /* ── CONDITION CARDS ── */
+    .condition-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .condition-card {
+      border-radius: 10px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 2px solid var(--border);
+    }
+    .condition-card.light { border-color: var(--green); background: var(--green-light); }
+    .condition-card.normal { border-color: var(--blue); background: var(--blue-light); }
+    .condition-card.heavy { border-color: #e67e22; background: #fef5ec; }
+    .condition-card.pet { border-color: #8e44ad; background: #f5eefb; }
+    .condition-icon { font-size: 2rem; margin-bottom: 10px; }
+    .condition-label { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .condition-adj { font-size: 1.1rem; font-weight: 800; margin-bottom: 6px; }
+    .condition-adj.save { color: var(--green); }
+    .condition-adj.standard { color: var(--blue); }
+    .condition-adj.more { color: #e67e22; }
+    .condition-adj.pet-color { color: #8e44ad; }
+    .condition-desc { font-size: 0.82rem; color: var(--muted); }
 
-  /* anchor offset for sticky header */
-  html{ scroll-behavior:smooth; scroll-padding-top:96px; }
+    /* ── EXAMPLE BOX ── */
+    .example-box {
+      background: var(--white);
+      border: 2px solid var(--blue);
+      border-radius: 12px;
+      padding: 28px;
+      margin-top: 32px;
+    }
+    .example-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--blue); }
+    .example-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+    .example-row:last-child { border-bottom: none; }
+    .example-row.total { font-weight: 800; font-size: 1.1rem; padding-top: 14px; color: var(--blue); }
+    .example-row.discount { color: var(--green); font-weight: 600; }
 
-  /* Brand */
-  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
-  .brand img{ width:72px; height:72px; object-fit:contain; border-radius:8px; }
-  .brand-title{
-    font-family:'Anton', sans-serif; text-transform:uppercase;
-    font-weight:400; letter-spacing:1px; font-size:1.6rem; color:#1f2937;
-  }
+    /* ── ADDONS ── */
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .addon-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+    .addon-name { font-weight: 600; font-size: 0.95rem; }
+    .addon-sub { font-size: 0.8rem; color: var(--muted); margin-top: 2px; }
+    .addon-price { font-weight: 800; font-size: 1rem; color: var(--blue); white-space: nowrap; margin-left: 12px; }
 
-  /* Inline nav (desktop) */
-  .nav{ display:flex; gap:20px; justify-content:center; }
-  .nav-link{
-    position:relative; text-decoration:none; color:#1f2937; font-weight:600; padding:6px 2px;
-  }
-  .nav-link:hover{ color:#0b5e49; }
-  .nav-link.active::after,
-  .nav-link:hover::after{
-    content:""; position:absolute; left:0; right:0; bottom:-10px; height:3px;
-    background:var(--snake); border-radius:999px;
-  }
+    /* ── MIN NOTE ── */
+    .min-note {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      font-size: 0.93rem;
+      margin-top: 24px;
+    }
+    .min-note strong { color: var(--blue); }
 
-  /* Right actions (desktop) */
-  .nav-cta{ display:flex; align-items:center; gap:14px; }
-  .phone{
-    color:#0b5e49; text-decoration:none; font-weight:800;
-    padding:6px 10px; border-radius:8px; background:#ecfdf5;
-  }
-  .btn-primary{
-    display:inline-block; font-weight:900; text-decoration:none; color:#000;
-    background:var(--snake); border:2px solid var(--snake-dark);
-    padding:10px 14px; border-radius:10px; box-shadow:0 6px 18px rgba(76,175,80,.25);
-  }
-  .btn-primary:hover{ filter:brightness(.95); }
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 56px 24px;
+    }
+    .cta-section h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
+    .cta-section p { opacity: 0.9; margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-  /* Menu pill (mobile trigger) */
-  .menu-pill{
-    appearance:none; border:1px solid var(--line);
-    background:#fff; color:#111; font-weight:700;
-    height:40px; padding:0 12px; border-radius:999px;
-    display:none; align-items:center; gap:8px; cursor:pointer;
-    box-shadow:0 2px 8px rgba(0,0,0,.06);
-  }
-  .menu-pill:focus-visible{ outline:2px solid var(--snake); outline-offset:2px; }
-  .menu-icon, .menu-icon::before, .menu-icon::after{
-    content:""; display:block; width:18px; height:2px; background:#111; border-radius:2px;
-  }
-  .menu-icon::before{ transform: translateY(-6px); }
-  .menu-icon::after{  transform: translateY( 4px); }
+    /* ── FOOTER ── */
+    footer { background: var(--text); color: rgba(255,255,255,0.8); padding: 40px 24px; }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+    footer h4 { color: var(--white); font-size: 0.95rem; margin-bottom: 12px; }
+    footer p, footer a {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      line-height: 1.8;
+      display: block;
+    }
+    footer a:hover { color: var(--white); }
+    .footer-logo img { height: 36px; margin-bottom: 10px; }
+    .footer-bottom {
+      max-width: 900px;
+      margin: 24px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
 
-  /* animate to X when open */
-  .menu-open .menu-icon{ background:transparent; }
-  .menu-open .menu-icon::before{ transform: rotate(45deg); }
-  .menu-open .menu-icon::after{  transform: rotate(-45deg); }
-
-/* Mobile layout */
-@media (max-width:900px){
-  .nav-row{ grid-template-columns:auto 1fr auto; height:72px; }
-  .brand img{ width:44px; height:44px; }
-  .brand-title{ font-size:1.1rem; letter-spacing:.5px; }
-
-  html{ scroll-padding-top:72px; }
-
-  .menu-pill{ display:flex; }
-  .nav-cta{ display:none; } /* we move actions into the dropdown */
-
-  /* Dropdown panel */
-  .nav{
-    position:absolute; left:0; right:0; top:72px;
-    background:#fff; border-bottom:1px solid var(--line);
-    display:none; flex-direction:column; padding:6px 0;
-    box-shadow:0 10px 24px rgba(0,0,0,.08);
-  }
-  .nav.open{ display:flex; }
-
-  .nav-link{
-    padding:14px 24px; font-size:1.05rem;
-    border-bottom:1px solid rgba(0,0,0,.05);
-  }
-  .nav-link:last-of-type{ border-bottom:none; }
-  .nav-link::after{ content:none; } /* remove desktop underline */
-
-  .phone-mobile{
-    display:block; margin:8px 24px; padding:10px 12px;
-    background:#ecfdf5; color:#0b5e49; text-decoration:none; font-weight:800;
-    border-radius:8px; text-align:center;
-  }
-  .cta-mobile{
-    display:block; margin:6px 24px 14px; text-align:center;
-    box-shadow:0 6px 18px rgba(76,175,80,.25);
-  }
-}
-
-</style>
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .trust-bar { gap: 16px; }
+      .price-table thead th:nth-child(2), .price-table td:nth-child(2) { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Top bar -->
-  <header class="site-header">
-    <div class="container nav-row">
-      <!-- Brand -->
-      <a href="index.html" class="brand">
-        <img src="images/logo.png" alt="Riverside Carpet Cleaning logo">
-        <span class="brand-title">Riverside Carpet Cleaning</span>
-      </a>
-  
-      <!-- Menu pill (mobile) -->
-      <button class="menu-pill" aria-label="Open menu" aria-expanded="false">
-        <span class="menu-icon"></span>
-        <span class="menu-text">Menu</span>
-      </button>
-  
-      <!-- Nav -->
-      <nav class="nav">
-        <a href="index.html#hero" class="nav-link">Home</a>
-        <a href="index.html#services" class="nav-link">Services</a>
-        <a href="pricing.html" class="nav-link active">Pricing</a>
-        <a href="index.html#contact" class="nav-link">Contact</a>
-        <a class="phone phone-mobile" href="tel:+17252599927" aria-label="Call Riverside Carpet Cleaning at (725) 259-9927">(725) 259-9927</a>
-        <a class="btn-primary pill cta-mobile" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
-      </nav>
-    </div>
-  </header>
-  
-  <div class="page">
-    <h1 class="title">Pricing & Service Add-Ons</h1>
 
-    <div class="wrap">
-      <!-- LEFT: catalog -->
-      <div>
-        <div class="notice">
-          <strong>BUNDLE SERVICES FOR DISCOUNTS.</strong>
-          Updated base pricing, service tiers, and add-ons are listed below. Pet urine odor, colored stains, deodorizer, and carpet conditioning are additional services.
-        </div>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="https://riversidecarpetcleaninglv.com/index.html">
+    <img src="https://riversidecarpetcleaninglv.com/images/logo.png" alt="Riverside Carpet Cleaning logo" />
+    Riverside Carpet Cleaning
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://riversidecarpetcleaninglv.com/index.html#hero">Home</a></li>
+    <li><a href="https://riversidecarpetcleaninglv.com/index.html#services">Services</a></li>
+    <li><a href="pricing.html" style="color: var(--blue);">Pricing</a></li>
+    <li><a href="https://riversidecarpetcleaninglv.com/index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="nav-phone" href="tel:+17252599927">(725) 259-9927</a>
+    <a class="btn btn-primary" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+  </div>
+</nav>
 
-        <div class="toolbar">
-          <div class="search">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke-width="2"/></svg>
-            <input id="search" placeholder="Search…" />
-          </div>
-          <div class="view">
-            <button id="gridBtn" class="btn">Grid view</button>
-            <button id="listBtn" class="btn">List view</button>
-          </div>
-        </div>
+<!-- HERO -->
+<div class="hero">
+  <h1>Clear, Honest Pricing</h1>
+  <p>No hidden fees. No bait-and-switch. Just straightforward pricing for a job done right.</p>
+  <a class="btn-white" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Online Now</a>
+</div>
 
-        <div id="catalog" class="grid"></div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <span>Fully Equipped Van</span>
+  <span>Eco-Friendly Solutions</span>
+  <span>100% Satisfaction Guarantee</span>
+  <span>Kid &amp; Pet Safe</span>
+</div>
+
+<!-- CARPET CLEANING -->
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Carpet Cleaning</h2>
+    <p class="section-sub">Priced by room size. Every job includes pre-inspection, spot treatment, hot water extraction, and a fast-dry pass.</p>
+    <table class="price-table">
+      <thead>
+        <tr><th>Service</th><th>Room Size</th><th>Price</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard Room<span class="note">Bedrooms, small offices</span></td>
+          <td>Up to 144 sq ft</td><td>$55</td>
+        </tr>
+        <tr>
+          <td>Medium Room<span class="note">Living rooms, dining rooms</span></td>
+          <td>Up to 288 sq ft</td><td>$68</td>
+        </tr>
+        <tr>
+          <td>Large Room<span class="note">Great rooms, open-plan areas</span></td>
+          <td>Up to 432 sq ft</td><td>$92</td>
+        </tr>
+        <tr>
+          <td>Small Hallway<span class="note">Landings, entries</span></td>
+          <td>Up to 56 sq ft</td><td>$25</td>
+        </tr>
+        <tr>
+          <td>Stair Flight<span class="note">Up to 14 steps</span></td>
+          <td>—</td><td>$45</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="min-note"><strong>$100 minimum per visit.</strong> Covers travel, setup, and equipment for any job in the Las Vegas area.</div>
+  </div>
+</section>
+
+<!-- CONDITION MODIFIER -->
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Carpet Condition Pricing</h2>
+    <p class="section-sub">We adjust the base price based on how soiled your carpet is — because a maintenance clean shouldn't cost the same as a deep restoration.</p>
+    <div class="condition-grid">
+      <div class="condition-card light">
+        <div class="condition-icon">✨</div>
+        <div class="condition-label">Light Soil</div>
+        <div class="condition-adj save">−15% off base</div>
+        <div class="condition-desc">Regular maintenance, lightly used rooms, recently cleaned</div>
       </div>
-
-      <!-- RIGHT: cart -->
-      <aside class="side">
-        <div class="biz">
-          <img src="images/logo.png" alt="Logo" />
-          <div>
-            <h3>Riverside Carpet Cleaning</h3>
-            <div class="muted">(725) 259-9927</div>
-          </div>
-        </div>
-
-        <div class="cart" id="cart"></div>
-
-        <div class="coupon">
-          <input id="coupon" placeholder="Enter coupon (GREEN10)" />
-          <button class="btn" id="applyCoupon">Apply</button>
-        </div>
-        <p id="couponMsg" class="coupon-feedback" aria-live="polite"></p>
-
-        <div class="totals">
-          <div class="lineR"><span>Subtotal</span><strong id="sub">$0.00</strong></div>
-          <div class="lineR"><span>Discount</span><strong id="disc">-$0.00</strong></div>
-          <div class="lineR grand"><span>Total</span><span id="grand">$0.00</span></div>
-        </div>
-
-        <button class="btn btn-accent pill" id="continue">Book Now »</button>
-        <div class="muted" style="margin-top:8px;">Ready to schedule? Continue to secure online booking.</div>
-      </aside>
+      <div class="condition-card normal">
+        <div class="condition-icon">🏠</div>
+        <div class="condition-label">Normal Soil</div>
+        <div class="condition-adj standard">Base price</div>
+        <div class="condition-desc">Everyday family use, some visible dirt or light staining</div>
+      </div>
+      <div class="condition-card heavy">
+        <div class="condition-icon">⚠️</div>
+        <div class="condition-label">Heavy Soil</div>
+        <div class="condition-adj more">+20% over base</div>
+        <div class="condition-desc">Embedded dirt, tough stains, high-traffic areas needing extra treatment</div>
+      </div>
+      <div class="condition-card pet">
+        <div class="condition-icon">🐾</div>
+        <div class="condition-label">Pet Treatment</div>
+        <div class="condition-adj pet-color">+$50–$100 flat</div>
+        <div class="condition-desc">Enzyme treatment for pet urine and odor elimination, depending on severity</div>
+      </div>
+    </div>
+    <div class="example-box">
+      <h3>📋 Example Job — 3-Bed Home, Light Soil</h3>
+      <div class="example-row"><span>Living Room (288 sq ft)</span><span>$68</span></div>
+      <div class="example-row"><span>Master Bedroom (192 sq ft)</span><span>$68</span></div>
+      <div class="example-row"><span>Bedroom (122 sq ft)</span><span>$55</span></div>
+      <div class="example-row"><span>Bedroom (110 sq ft)</span><span>$55</span></div>
+      <div class="example-row"><span>Hallway</span><span>$25</span></div>
+      <div class="example-row"><span>Subtotal</span><span>$271</span></div>
+      <div class="example-row discount"><span>Light Soil Discount (−15%)</span><span>−$41</span></div>
+      <div class="example-row total"><span>Total</span><span>$230</span></div>
     </div>
   </div>
+</section>
 
-<script>
-/* ------- Data (replace images/prices as you like) ------- */
-const PRODUCTS = [
-  {
-    id:'std-room',
-    name:'Standard size room up to 144 sq ft',
-    desc:'Any bedroom, dining room, living room…',
-    price:40,
-    img:'images/standard_room_size.jpg'
-  },
-  {
-    id:'med-room',
-    name:'Medium room up to 288 sq ft',
-    desc:'Any room or area up to 288 sq ft.',
-    price:68,
-    img:'images/medium_room.jpg'
-  },
-  {
-    id:'large-room',
-    name:'Large room up to 432 sq ft',
-    desc:'Any room or double area up to 432 sq ft.',
-    price:92,
-    img:'images/large_room.jpg'
-  },
-  {
-    id:'stairs',
-    name:'Stair Flights',
-    desc:'Single staircase (up to 14 steps).',
-    price:30,
-    img:'images/stairs.jpg'
-  },
-  {
-    id:'hall',
-    name:'Small Hallway up to 56 sq ft',
-    desc:'Hall/landing area. Great add-on.',
-    price:15,
-    img:'images/hall.jpg'
-  },
-  {
-    id:'recliner',
-    name:'Recliner Chair',
-    desc:'Recliners and one seaters',
-    price:50,
-    img:'images/recliner.jpg'
-  },
-  {
-    id:'loveseat',
-    name:'Loveseat',
-    desc:'2 seat',
-    price:85,
-    img:'images/loveseat.jpg'
-  },
-  {
-    id:'3-seater',
-    name:'Sofa 3 Seater',
-    desc:'3 seater sofa',
-    price:135,
-    img:'images/3-seater.jpg'
-  },
-  {
-    id:'4-seater',
-    name:'Sectional Sofa 4 Seater',
-    desc:'4 seat couch',
-    price:185,
-    img:'images/4-seater.jpg'
-  },
-  {
-    id:'5-seater',
-    name:'Sectional Sofa 5 Seater',
-    desc:'5 seat couch',
-    price:240,
-    img:'images/5-seater.jpg'
-  },
-  {
-    id:'l-shape',
-    name:'L-shape Seater',
-    desc:'6 seater L-shape or similar in size',
-    price:300,
-    img:'images/l-shape.jpg'
-  }
-];
+<!-- UPHOLSTERY -->
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Upholstery Cleaning</h2>
+    <p class="section-sub">Deep cleaning for sofas, chairs, and sectionals. Safe for kids, pets, and delicate fabrics. Includes pre-vacuum, spot treatment, hot-water extraction, and deodorize.</p>
+    <table class="price-table">
+      <thead>
+        <tr><th>Item</th><th>Details</th><th>Price</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Recliner Chair</td><td>Single recliner</td><td>$50</td></tr>
+        <tr><td>Loveseat</td><td>2-seater sofa</td><td>$85</td></tr>
+        <tr><td>Sofa</td><td>3-seater</td><td>$135</td></tr>
+        <tr><td>Sectional Sofa</td><td>4-seater</td><td>$185</td></tr>
+        <tr><td>Sectional Sofa</td><td>5-seater</td><td>$240</td></tr>
+        <tr><td>L-Shape Sectional</td><td>6-seater or similar</td><td>$300</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-const state = {
-  view:'grid',
-  filter:'',
-  cart:{},           // {id: {qty, product}}
-  coupon:null        // 'GREEN10' -> 10%
-};
-
-const el = sel => document.querySelector(sel);
-
-/* ------- Render Catalog ------- */
-function qtyStepper(id, label){
-  return `
-    <div class="qty" data-for="${id}">
-      <button type="button" class="qminus">−</button>
-      <input type="number" min="1" value="1" aria-label="Quantity for ${label}" />
-      <button type="button" class="qplus">+</button>
-    </div>
-  `;
-}
-
-function card(product){
-  return `
-  <article class="card">
-    <div class="media">${product.img ? `<img src="${product.img}" alt="${product.name}">` : ''}</div>
-    <div class="body">
-      <div class="name">${product.name}</div>
-      <div class="desc">${product.desc}</div>
-      <div class="priceRow">
-        <div><span class="price">$${product.price.toFixed(2)}</span><span class="unit">/each</span></div>
+<!-- ADD-ONS -->
+<section>
+  <div class="section-inner">
+    <h2 class="section-title">Add-On Services</h2>
+    <p class="section-sub">Enhance your clean with these optional treatments — ask us when booking.</p>
+    <div class="addon-grid">
+      <div class="addon-card">
+        <div><div class="addon-name">Deodorizer</div><div class="addon-sub">Eliminates odors at the source</div></div>
+        <div class="addon-price">$20</div>
       </div>
-      <div class="controls">
-        ${qtyStepper(product.id, product.name)}
-        <button class="btn add" data-id="${product.id}">Add to Cart</button>
+      <div class="addon-card">
+        <div><div class="addon-name">Scotchgard Protection</div><div class="addon-sub">Stain-resistant coating per room</div></div>
+        <div class="addon-price">$25–$30<br><span style="font-size:0.78rem;color:var(--muted);font-weight:400">per room</span></div>
+      </div>
+      <div class="addon-card">
+        <div><div class="addon-name">Pet Enzyme Treatment</div><div class="addon-sub">Neutralizes pet urine &amp; odor</div></div>
+        <div class="addon-price">$50–$100</div>
+      </div>
+      <div class="addon-card">
+        <div><div class="addon-name">Fabric Protector</div><div class="addon-sub">For upholstery cleaning jobs</div></div>
+        <div class="addon-price">Ask us</div>
+      </div>
+      <div class="addon-card">
+        <div><div class="addon-name">Sanitizer</div><div class="addon-sub">Kills bacteria &amp; allergens</div></div>
+        <div class="addon-price">Ask us</div>
       </div>
     </div>
-  </article>`;
-}
+  </div>
+</section>
 
-function listRow(product){
-  // same content but compact (for list view)
-  return `
-  <article class="card" style="flex-direction:row;gap:12px">
-    <div class="media" style="width:220px;flex:0 0 220px">${product.img ? `<img src="${product.img}" alt="${product.name}">` : ''}</div>
-    <div class="body" style="flex:1">
-      <div class="name" style="font-size:18px">${product.name}</div>
-      <div class="desc">${product.desc}</div>
-      <div class="priceRow">
-        <div><span class="price">$${product.price.toFixed(2)}</span><span class="unit">/each</span></div>
-      </div>
-      <div class="controls">
-        ${qtyStepper(product.id, product.name)}
-        <button class="btn add" data-id="${product.id}">Add to Cart</button>
-      </div>
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Ready to Book?</h2>
+  <p>Online booking takes less than 2 minutes. Or call us and we'll get you a quote on the spot.</p>
+  <a class="btn-white" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Online</a>
+  &nbsp;&nbsp;
+  <a class="btn-white" href="tel:+17252599927" style="margin-top:12px;display:inline-block;">(725) 259-9927</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://riversidecarpetcleaninglv.com/images/logo.png" alt="Riverside Carpet Cleaning" />
+      <p>Local, family-run carpet and floor care. Eco-conscious. Zero drama.</p>
     </div>
-  </article>`;
-}
-
-function renderCatalog(){
-  const wrap = el('#catalog');
-  wrap.className = state.view === 'grid' ? 'grid' : 'list';
-  const items = PRODUCTS.filter(p =>
-    p.name.toLowerCase().includes(state.filter) ||
-    p.desc.toLowerCase().includes(state.filter)
-  );
-  wrap.innerHTML = items.map(p => state.view==='grid'?card(p):listRow(p)).join('');
-}
-
-/* ------- Cart ------- */
-function addToCart(id, qty){
-  const product = PRODUCTS.find(p=>p.id===id);
-  if(!product) return;
-  if(!state.cart[id]) state.cart[id] = {qty:0, product};
-  state.cart[id].qty += qty;
-  renderCart();
-}
-
-function removeFromCart(id){
-  delete state.cart[id];
-  renderCart();
-}
-
-function computeTotals(){
-  let subtotal = 0;
-  for(const k in state.cart){
-    subtotal += state.cart[k].qty * state.cart[k].product.price;
-  }
-  let discount = 0;
-  if(state.coupon==='GREEN10') discount = subtotal * 0.10;
-  const total = Math.max(0, subtotal - discount);
-  return {subtotal, discount, total};
-}
-
-function renderCart(){
-  const c = el('#cart');
-  const keys = Object.keys(state.cart);
-  if(keys.length===0){
-    c.innerHTML = `<div class="muted">Cart is empty.</div>`;
-  }else{
-    c.innerHTML = keys.map(k=>{
-      const {product, qty} = state.cart[k];
-      return `
-        <div class="cart-item">
-          <div>
-            <div><strong>${product.name}</strong></div>
-            <small>$${product.price.toFixed(2)} × ${qty}</small>
-          </div>
-          <div>
-            <div><strong>$${(product.price*qty).toFixed(2)}</strong></div>
-            <button class="rm" data-id="${product.id}">remove</button>
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
-  const {subtotal, discount, total} = computeTotals();
-  el('#sub').textContent = `$${subtotal.toFixed(2)}`;
-  el('#disc').textContent = `-$${discount.toFixed(2)}`;
-  el('#grand').textContent = `$${total.toFixed(2)}`;
-}
-
-/* ------- Events ------- */
-document.addEventListener('click', e=>{
-  if(e.target.matches('.add')){
-    const id = e.target.dataset.id;
-    const qtyEl = e.target.closest('.controls').querySelector('input');
-    addToCart(id, Math.max(1, parseInt(qtyEl.value||'1',10)));
-  }
-  if(e.target.matches('.rm')){
-    removeFromCart(e.target.dataset.id);
-  }
-  if(e.target.matches('.qplus')){
-    const input = e.target.parentElement.querySelector('input');
-    input.value = (parseInt(input.value||'1',10)+1);
-  }
-  if(e.target.matches('.qminus')){
-    const input = e.target.parentElement.querySelector('input');
-    input.value = Math.max(1, parseInt(input.value||'1',10)-1);
-  }
-  if(e.target.id==='gridBtn'){ state.view='grid'; renderCatalog(); }
-  if(e.target.id==='listBtn'){ state.view='list'; renderCatalog(); }
-});
-
-el('#search').addEventListener('input', e=>{
-  state.filter = e.target.value.trim().toLowerCase();
-  renderCatalog();
-});
-
-el('#applyCoupon').addEventListener('click', ()=>{
-  const code = el('#coupon').value.trim().toUpperCase();
-  state.coupon = (code==='GREEN10') ? 'GREEN10' : null;
-  renderCart();
-  el('#couponMsg').textContent = state.coupon ? '' : 'Invalid coupon code. Please check and try again.';
-});
-
-el('#continue').addEventListener('click', ()=>{
-  window.location.href = 'https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start';
-});
-
-/* Init */
-renderCatalog();
-renderCart();
-</script>
-
-<script>
-  const menuBtn = document.querySelector('.menu-pill');
-  const nav = document.querySelector('.nav');
-
-  menuBtn?.addEventListener('click', () => {
-    const isOpen = nav?.classList.toggle('open');
-    menuBtn.classList.toggle('menu-open', isOpen);
-    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-  });
-
-  // Close the menu after tapping a link
-  document.querySelectorAll('.nav a').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      menuBtn.classList.remove('menu-open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-</script>
+    <div>
+      <h4>Hours</h4>
+      <p>Monday – Sunday<br/>7:00 AM – 6:00 PM</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+17252599927">(725) 259-9927</a>
+      <a href="mailto:info@riversidecarpetcleaninglv.com">info@riversidecarpetcleaninglv.com</a>
+    </div>
+    <div>
+      <h4>Links</h4>
+      <a href="https://riversidecarpetcleaninglv.com/index.html">Home</a>
+      <a href="https://riversidecarpetcleaninglv.com/index.html#services">Services</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="https://riversidecarpetcleaninglv.com/index.html#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Riverside Carpet Cleaning · Las Vegas, NV · All rights reserved.</div>
+</footer>
 
 </body>
 </html>
