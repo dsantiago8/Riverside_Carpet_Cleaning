@@ -621,20 +621,18 @@
     function equalizeServiceCards() {
       const cards = document.querySelectorAll('.service-grid .card');
       let maxH = 0;
-  
-      // reset any inline heights before measuring
+
+      // find the tallest card face content so everything stays inside the frame
       cards.forEach(card => {
-        const front = card.querySelector('.card-front') || card; // non-flip cards OK
-        front.style.height = 'auto';
-      });
-  
-      // find tallest front
-      cards.forEach(card => {
-        const front = card.querySelector('.card-front') || card;
-        const h = front.offsetHeight;
+        const front = card.querySelector('.card-front');
+        const back = card.querySelector('.card-back');
+        const h = front && back
+          ? Math.max(front.scrollHeight, back.scrollHeight)
+          : card.scrollHeight;
+
         if (h > maxH) maxH = h;
       });
-  
+
       // set the CSS var used by .card / .flip-card
       document.documentElement.style.setProperty('--card-h', maxH + 'px');
     }
