@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/styles.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,6 +23,10 @@
       --border: #e2e8f0;
       --white: #ffffff;
       --bg: #f5f5f5;
+      /* shared nav variables */
+      --hair: #e2e8f0;
+      --snake: #4CAF50;
+      --snake-dark: #399638;
     }
 
     body {
@@ -30,67 +35,6 @@
       background: var(--white);
       line-height: 1.6;
     }
-
-    /* ── NAV ── */
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--text);
-    }
-    .nav-logo img { height: 40px; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--muted);
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--blue); }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .nav-phone {
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 22px;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: background 0.2s, transform 0.1s;
-      cursor: pointer;
-    }
-    .btn-primary { background: var(--blue); color: #000; font-weight: 900; }
-    .btn-primary:hover { background: var(--blue-dark); }
 
     /* ── HERO ── */
     .hero {
@@ -300,7 +244,6 @@
     }
 
     @media (max-width: 600px) {
-      .nav-links { display: none; }
       .trust-bar { gap: 16px; }
       .price-table thead th:nth-child(2), .price-table td:nth-child(2) { display: none; }
     }
@@ -309,22 +252,39 @@
 <body>
 
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="https://riversidecarpetcleaninglv.com/index.html">
-    <img src="https://riversidecarpetcleaninglv.com/images/logo.png" alt="Riverside Carpet Cleaning logo" />
-    Riverside Carpet Cleaning
-  </a>
-  <ul class="nav-links">
-    <li><a href="https://riversidecarpetcleaninglv.com/index.html#hero">Home</a></li>
-    <li><a href="https://riversidecarpetcleaninglv.com/index.html#services">Services</a></li>
-    <li><a href="pricing.html" style="color: var(--blue);">Pricing</a></li>
-    <li><a href="https://riversidecarpetcleaninglv.com/index.html#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <a class="nav-phone" href="tel:+17252599927">(725) 259-9927</a>
-    <a class="btn btn-primary" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+<header class="site-header">
+  <div class="container nav-row">
+    <!-- Brand -->
+    <a href="index.html" class="brand">
+      <img src="images/logo.png" alt="Riverside Carpet Cleaning logo">
+      <span class="brand-title">Riverside Carpet Cleaning</span>
+    </a>
+
+    <!-- Menu pill -->
+    <button class="menu-pill" aria-label="Open menu" aria-expanded="false">
+      <span class="menu-icon"></span>
+      <span class="menu-text">Menu</span>
+    </button>
+
+    <!-- Nav (dropdown on mobile) -->
+    <nav class="nav">
+      <a href="index.html#hero" class="nav-link">Home</a>
+      <a href="index.html#services" class="nav-link">Services</a>
+      <a href="pricing.html" class="nav-link active">Pricing</a>
+      <a href="index.html#contact" class="nav-link">Contact</a>
+      <div class="nav-cta"></div>
+        <a class="phone phone-mobile" href="tel:+17252599927">(725) 259-9927</a>
+        <a class="btn-primary pill cta-mobile" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+      </div>
+    </nav>
+
+    <!-- Right: phone + CTA (desktop only) -->
+    <div class="nav-cta">
+      <a class="phone" href="tel:+17252599927">(725) 259-9927</a>
+      <a class="btn-primary pill" href="https://app.squareup.com/appointments/book/o064iqa1v35uvb/L6192KWCAZCE9/start">Book Now</a>
+    </div>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
 <div class="hero">
@@ -509,5 +469,25 @@
   <div class="footer-bottom">© 2026 Riverside Carpet Cleaning · Las Vegas, NV · All rights reserved.</div>
 </footer>
 
+
+<script>
+  const menuBtn = document.querySelector('.menu-pill');
+  const nav = document.querySelector('.nav');
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open');
+    menuBtn.classList.toggle('menu-open', isOpen);
+    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close menu after any link tap
+  document.querySelectorAll('.nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuBtn.classList.remove('menu-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
 </body>
 </html>
