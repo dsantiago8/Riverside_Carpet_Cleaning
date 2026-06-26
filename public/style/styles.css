@@ -33,7 +33,7 @@
   }
   .container{max-width:1200px;margin:0 auto;padding:0 24px;}
   .nav-row{
-    display:grid; grid-template-columns:auto 1fr auto; align-items:center;
+    display:flex; align-items:center;
     gap:16px; height:110px;
   }
 
@@ -43,7 +43,7 @@
   }
 
   /* Brand */
-  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none; flex:1;}
   .brand img{width:115px; height:115px; object-fit:contain; border-radius:8px}
   .brand-title {
     font-family: 'Anton', sans-serif;
@@ -54,7 +54,7 @@
   }
   
   /* Nav */
-  .nav{display:flex; gap:20px; justify-content:center}
+  .nav{display:flex; gap:20px; justify-content:center; flex-shrink:0;}
   .nav-link{
     position:relative; text-decoration:none; color:#1f2937; font-weight:600;
     padding:6px 2px;
@@ -68,6 +68,10 @@
 
   /* Right side */
   .nav-cta{display:flex; align-items:center; gap:14px}
+  /* Outer nav-cta (desktop): equal flex space on right, content right-aligned */
+  .nav-row > .nav-cta{flex:1; justify-content:flex-end;}
+  /* Inner nav-cta (inside mobile dropdown): hidden on desktop */
+  .nav .nav-cta{display:none;}
   .phone{
     color:#0b5e49; text-decoration:none; font-weight:800;
     padding:6px 10px; border-radius:8px; background:#ecfdf5; /* soft green chip */
@@ -114,7 +118,6 @@
   /* Mobile layout */
   @media (max-width:900px){
     .nav-row{
-      grid-template-columns:auto 1fr auto;
       height:72px;
     }
     .brand img{ width:44px; height:44px; }
@@ -122,8 +125,8 @@
 
     html{ scroll-padding-top:72px; } /* anchor offset */
 
-    .menu-pill{ display:flex; }      /* show pill */
-    .nav-cta{ display:none; }        /* hide desktop CTAs on mobile */
+    .menu-pill{ display:flex; margin-left:auto; }  /* show pill, push to right */
+    .nav-row > .nav-cta{ display:none; }  /* hide outer desktop CTA on mobile */
 
     /* Dropdown panel */
     .nav{
@@ -133,6 +136,8 @@
       box-shadow:0 10px 24px rgba(0,0,0,.08);
     }
     .nav.open{ display:flex; }
+    /* Show phone/book-now inside open mobile dropdown */
+    .nav.open .nav-cta{display:flex; flex-direction:column; align-items:stretch; gap:0;}
 
     /* Large tap targets */
     .nav-link{
