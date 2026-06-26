@@ -72,9 +72,12 @@
   .nav-row > .nav-cta{flex:1; justify-content:flex-end;}
   /* Inner nav-cta (inside mobile dropdown): hidden on desktop */
   .nav .nav-cta{display:none;}
+  /* Belt-and-suspenders: also hide mobile-only links on desktop */
+  .phone-mobile, .cta-mobile{display:none;}
   .phone{
     color:#0b5e49; text-decoration:none; font-weight:800;
     padding:6px 10px; border-radius:8px; background:#ecfdf5; /* soft green chip */
+    white-space:nowrap; /* prevent phone number from wrapping */
   }
   .btn-primary{
     display:inline-block; font-weight:900; text-decoration:none; color:#000;
