@@ -348,16 +348,11 @@
     padding: 12px 16px;
   }
 
-  /* Give flip cards their own intrinsic height so layout stays intact even without non-flip cards */
-  .flip-card{ min-height: 520px; }
-  .flip-card .card-face{ min-height: 520px; }
-  @media (max-width: 1024px){
-    .flip-card,
-    .flip-card .card-face{ min-height: 560px; }
-  }
+  /* Ensure all flip cards are same height (use your existing grid card height) */
+  .flip-card{ height: var(--card-h, auto); }
+  .flip-card .card-face{ min-height: 0px; }     /* adjust to match your tallest card */
   @media (max-width: 700px){
-    .flip-card,
-    .flip-card .card-face{ min-height: 500px; }
+    .flip-card .card-face{ min-height: 420px; }   /* extra room on small screens if needed */
   }
 
     
