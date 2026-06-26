@@ -392,6 +392,41 @@
   }
 
 
+  /* Pricing teaser strip */
+  .pricing-teaser{
+    background:#2c3236;
+    padding:28px 0;
+    border-top:3px solid rgba(57,255,20,.18);
+    text-align:center;
+  }
+  .pricing-teaser-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .pricing-teaser-line{
+    color:#f9fafb;
+    font-size:20px;
+    margin:0;
+  }
+  .pricing-teaser-line strong{
+    color:#39ff14;
+  }
+  .pricing-teaser-line a{
+    color:#39ff14;
+    text-decoration:underline;
+    font-weight:600;
+  }
+  .pricing-teaser-min{
+    color:#b0b8c1;
+    font-size:14px;
+    margin:0;
+  }
+  .pricing-teaser-btn{
+    margin-top:8px;
+  }
+
   /* Band container */
   .ba-section{
     background: linear-gradient(180deg, #2c3236, var(--charcoal));
